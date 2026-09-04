@@ -1,145 +1,73 @@
-<div align="center">
+# 🔥 README Forge
 
-# Hi 👋, I'm READMD Frage 
+### A modern, free and open-source GitHub Profile README Generator
 
-### Full-Stack Developer • Open Source Enthusiast • Software Engineer
-
-<p>
-  <a href="https://github.com/YOUR_USERNAME">
-    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
-  </a>
-  <a href="https://www.linkedin.com/in/YOUR_USERNAME">
-    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
-  </a>
-  <a href="https://yourwebsite.com">
-    <img src="https://img.shields.io/badge/Portfolio-7C3AED?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio">
-  </a>
-</p>
-
-</div>
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Open Source](https://img.shields.io/badge/Open%20Source-Yes-success.svg)](https://opensource.org/)
+[![HTML](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 ---
 
-## 👨‍💻 About Me
+## ✨ About
 
-I'm a passionate developer who enjoys building useful, scalable, and
-well-designed software.
+**README Forge** is a modern, browser-based GitHub Profile README Generator designed to help developers create beautiful and professional GitHub profile README files without manually writing Markdown.
 
-- 🔭 Currently working on **open-source projects**
-- 🌱 Currently learning **Cloud, Systems & Backend Engineering**
-- 💡 Interested in **Software Engineering & Open Source**
-- ⚡ I enjoy turning ideas into real products
-- 🤝 Open to collaborating on interesting projects
+Build your profile visually, configure your technologies, projects, GitHub statistics, social links and additional sections — then instantly generate the final `README.md`.
+
+> **No backend. No database. No login. Just open, customize and generate.**
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Features
 
-<div align="center">
+### 👤 Profile Builder
 
-<img src="https://skillicons.dev/icons?i=python,js,ts,c,cpp,html,css,react,git,github,firebase,postgres,mysql,mongodb&perline=7" alt="Tech Stack">
+Create your GitHub profile information visually.
 
-</div>
-
----
-
-## 🚀 Featured Projects
-
-### 🔥 Project One
-
-> A modern project built to solve a real-world problem.
-
-- 💻 **Technology:** Python · React · PostgreSQL
-- ⭐ **GitHub:** [View Repository](https://github.com/YOUR_USERNAME/project-one)
-- 🌐 **Live Demo:** [Visit Project](https://example.com)
-
-### ⚡ Project Two
-
-> A clean and scalable application focused on performance and usability.
-
-- 💻 **Technology:** TypeScript · React · Firebase
-- ⭐ **GitHub:** [View Repository](https://github.com/YOUR_USERNAME/project-two)
-- 🌐 **Live Demo:** [Visit Project](https://example.com)
+- Full name
+- Professional role
+- Location
+- Company / Organization
+- GitHub username
+- Personal website
+- Bio
+- Social profiles
 
 ---
 
-## 📊 GitHub Statistics
+### 🛠️ Technology Stack
 
-<div align="center">
+Select technologies from an interactive icon-based technology library.
 
-<img
-  src="https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=tokyonight&hide_border=true&border_radius=12"
-  height="180"
-  alt="GitHub Statistics"
-/>
+Supported technologies include:
 
-<img
-  src="https://github-readme-stats.vercel.app/api/top-langs/?username=YOUR_USERNAME&layout=compact&theme=tokyonight&hide_border=true&border_radius=12"
-  height="180"
-  alt="Top Languages"
-/>
-
-<br><br>
-
-<img
-  src="https://streak-stats.demolab.com?user=YOUR_USERNAME&theme=tokyonight&hide_border=true&border_radius=12"
-  alt="GitHub Contribution Streak"
-/>
-
-</div>
-
----
-
-## 📈 Contribution Activity
-
-<div align="center">
-
-<img
-  src="https://github-readme-activity-graph.vercel.app/graph?username=YOUR_USERNAME&theme=tokyo-night&hide_border=true&area=true"
-  width="100%"
-  alt="GitHub Contribution Activity"
-/>
-
-</div>
-
----
-
-## 🌱 Currently Learning
-
-- Backend Architecture
-- System Design
+- Python
+- JavaScript
+- TypeScript
+- C
+- C++
+- Java
+- HTML5
+- CSS3
+- React
+- Node.js
+- Next.js
+- Vue.js
+- Tailwind CSS
+- Git
+- GitHub
 - Linux
-- Networking
-- Cloud Infrastructure
-- Database Engineering
-- Open Source Development
+- Docker
+- AWS
+- Firebase
+- PostgreSQL
+- MySQL
+- MongoDB
+- Figma
 
----
+Selected technologies can be converted into a beautiful icon-based Skill Stack using:
 
-## 🤝 Let's Connect
-
-<div align="center">
-
-<a href="https://github.com/YOUR_USERNAME">
-  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white">
-</a>
-
-<a href="https://linkedin.com/in/YOUR_USERNAME">
-  <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white">
-</a>
-
-<a href="mailto:YOUR_EMAIL@example.com">
-  <img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white">
-</a>
-
-</div>
-
----
-
-<div align="center">
-
-### ⭐ Thanks for visiting my profile!
-
-**Feel free to explore my repositories and connect with me.**
-
-</div>
+```text
+https://skillicons.dev
