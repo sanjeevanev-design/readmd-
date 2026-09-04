@@ -1,0 +1,6130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+  />
+
+  <title>README Forge — GitHub Profile README Generator</title>
+
+  <meta
+    name="description"
+    content="README Forge is a premium GitHub Profile README generator with live Markdown preview."
+  />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Bootstrap Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+  />
+
+  <style>
+    /* =========================================================
+       README FORGE
+       Premium UI
+       ========================================================= */
+
+    :root {
+      --bg: #080b10;
+      --bg-soft: #0c1118;
+      --surface: #10161f;
+      --surface-2: #151c26;
+      --surface-3: #1b2430;
+      --surface-hover: #202b38;
+
+      --border: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(255, 255, 255, 0.14);
+
+      --text: #f4f7fb;
+      --text-soft: #a7b0bd;
+      --text-muted: #687384;
+
+      --accent: #4ade80;
+      --accent-2: #22c55e;
+      --accent-soft: rgba(74, 222, 128, 0.1);
+
+      --blue: #58a6ff;
+      --purple: #a78bfa;
+      --orange: #fb923c;
+      --red: #f87171;
+
+      --shadow:
+        0 20px 70px rgba(0, 0, 0, 0.35);
+
+      --radius-sm: 8px;
+      --radius: 12px;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+
+      --nav-height: 72px;
+      --font-sans: "Inter", system-ui, sans-serif;
+      --font-display: "Space Grotesk", system-ui, sans-serif;
+      --font-mono: "DM Mono", monospace;
+
+      color-scheme: dark;
+    }
+
+    body.light {
+      --bg: #f6f8fa;
+      --bg-soft: #ffffff;
+      --surface: #ffffff;
+      --surface-2: #f6f8fa;
+      --surface-3: #eef1f4;
+      --surface-hover: #e6ebf0;
+
+      --border: rgba(27, 31, 36, 0.12);
+      --border-strong: rgba(27, 31, 36, 0.18);
+
+      --text: #1f2328;
+      --text-soft: #59636e;
+      --text-muted: #7a8490;
+
+      --accent: #1f883d;
+      --accent-2: #1a7f37;
+      --accent-soft: rgba(31, 136, 61, 0.1);
+
+      --shadow:
+        0 20px 70px rgba(31, 35, 40, 0.1);
+
+      color-scheme: light;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 15% -10%,
+          rgba(74, 222, 128, 0.08),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 85% 0%,
+          rgba(88, 166, 255, 0.07),
+          transparent 25%
+        ),
+        var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ::selection {
+      background: rgba(74, 222, 128, 0.25);
+    }
+
+    /* =========================================================
+       SCROLLBAR
+       ========================================================= */
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--surface-3);
+      border-radius: 99px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--surface-hover);
+    }
+
+    /* =========================================================
+       APP
+       ========================================================= */
+
+    .app {
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(1500px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* =========================================================
+       NAVBAR
+       ========================================================= */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-height);
+
+      background: rgba(8, 11, 16, 0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    body.light .navbar {
+      background: rgba(255, 255, 255, 0.85);
+    }
+
+    .navbar-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+
+      border: 1px solid rgba(74, 222, 128, 0.25);
+      border-radius: 11px;
+
+      color: var(--accent);
+      background:
+        linear-gradient(
+          145deg,
+          rgba(74, 222, 128, 0.14),
+          rgba(74, 222, 128, 0.04)
+        );
+
+      box-shadow:
+        0 0 0 4px rgba(74, 222, 128, 0.025);
+    }
+
+    .brand-mark i {
+      font-size: 20px;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-subtitle {
+      margin-top: 4px;
+      color: var(--text-muted);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      padding: 8px 11px;
+
+      border: 1px solid transparent;
+      border-radius: 8px;
+
+      background: transparent;
+      color: var(--text-soft);
+
+      font-size: 13px;
+      font-weight: 600;
+
+      transition: 0.2s ease;
+    }
+
+    .nav-item:hover {
+      color: var(--text);
+      background: var(--surface);
+      border-color: var(--border);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* =========================================================
+       BUTTONS
+       ========================================================= */
+
+    .btn {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      padding: 0 13px;
+
+      border: 1px solid var(--border);
+      border-radius: 9px;
+
+      background: var(--surface);
+      color: var(--text-soft);
+
+      font-size: 13px;
+      font-weight: 600;
+
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+    }
+
+    .btn:hover {
+      color: var(--text);
+      background: var(--surface-hover);
+      border-color: var(--border-strong);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+    }
+
+    .btn-primary {
+      color: #06100a;
+      border-color: rgba(74, 222, 128, 0.35);
+      background: var(--accent);
+    }
+
+    .btn-primary:hover {
+      color: #06100a;
+      background: #6ee7a0;
+      border-color: rgba(74, 222, 128, 0.5);
+    }
+
+    .btn-ghost {
+      background: transparent;
+    }
+
+    .btn-icon {
+      width: 38px;
+      padding: 0;
+    }
+
+    .btn-danger:hover {
+      color: var(--red);
+      border-color: rgba(248, 113, 113, 0.25);
+      background: rgba(248, 113, 113, 0.08);
+    }
+
+    /* =========================================================
+       HERO
+       ========================================================= */
+
+    .hero {
+      padding: 64px 0 34px;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 40px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-bottom: 14px;
+
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
+    }
+
+    .hero h1 {
+      max-width: 850px;
+
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+    }
+
+    .hero h1 span {
+      color: var(--text-muted);
+    }
+
+    .hero-description {
+      max-width: 680px;
+      margin-top: 18px;
+
+      color: var(--text-soft);
+      font-size: 15px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* =========================================================
+       WORKSPACE
+       ========================================================= */
+
+    .workspace {
+      display: grid;
+      grid-template-columns: 470px minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+      padding-bottom: 50px;
+    }
+
+    .builder {
+      min-width: 0;
+    }
+
+    .preview-wrapper {
+      position: sticky;
+      top: calc(var(--nav-height) + 18px);
+      min-width: 0;
+    }
+
+    /* =========================================================
+       PANEL
+       ========================================================= */
+
+    .panel {
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+
+      background: rgba(16, 22, 31, 0.88);
+      box-shadow: var(--shadow);
+    }
+
+    body.light .panel {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .panel + .panel {
+      margin-top: 12px;
+    }
+
+    .panel-header {
+      min-height: 68px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 14px 16px;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .panel-title {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .panel-icon {
+      width: 34px;
+      height: 34px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid var(--border);
+      border-radius: 9px;
+
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .panel-title h2 {
+      font-family: var(--font-display);
+      font-size: 14px;
+      letter-spacing: -0.02em;
+    }
+
+    .panel-title p {
+      margin-top: 2px;
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .panel-body {
+      padding: 16px;
+    }
+
+    /* =========================================================
+       FORM
+       ========================================================= */
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .form-group {
+      min-width: 0;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 7px;
+
+      color: var(--text-soft);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .label span {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .input,
+    .textarea,
+    .select {
+      width: 100%;
+
+      border: 1px solid var(--border);
+      border-radius: 9px;
+
+      outline: none;
+
+      background: var(--surface-2);
+      color: var(--text);
+
+      font-size: 13px;
+
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+    }
+
+    .input,
+    .select {
+      height: 42px;
+      padding: 0 12px;
+    }
+
+    .textarea {
+      min-height: 105px;
+      padding: 11px 12px;
+      resize: vertical;
+    }
+
+    .input::placeholder,
+    .textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .input:focus,
+    .textarea:focus,
+    .select:focus {
+      border-color: rgba(74, 222, 128, 0.45);
+      box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.08);
+      background: var(--surface);
+    }
+
+    .input.invalid {
+      border-color: rgba(248, 113, 113, 0.5);
+    }
+
+    .error {
+      display: none;
+      margin-top: 5px;
+      color: var(--red);
+      font-size: 10px;
+    }
+
+    .error.show {
+      display: block;
+    }
+
+    .input-prefix {
+      display: flex;
+      align-items: center;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+      border-radius: 9px;
+
+      background: var(--surface-2);
+    }
+
+    .input-prefix span {
+      height: 42px;
+
+      display: inline-flex;
+      align-items: center;
+
+      padding: 0 10px;
+
+      border-right: 1px solid var(--border);
+
+      color: var(--text-muted);
+
+      font-family: var(--font-mono);
+      font-size: 10px;
+
+      white-space: nowrap;
+    }
+
+    .input-prefix .input {
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    /* =========================================================
+       ACCORDION
+       ========================================================= */
+
+    .accordion {
+      border-top: 1px solid var(--border);
+    }
+
+    .accordion:first-child {
+      border-top: 0;
+    }
+
+    .accordion-header {
+      width: 100%;
+
+      min-height: 58px;
+
+      display: flex;
+      align-items: center;
+      gap: 11px;
+
+      padding: 10px 16px;
+
+      border: 0;
+
+      background: transparent;
+      color: var(--text);
+
+      text-align: left;
+
+      transition: background 0.2s ease;
+    }
+
+    .accordion-header:hover {
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    .accordion-icon {
+      width: 30px;
+      height: 30px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid var(--border);
+      border-radius: 8px;
+
+      color: var(--text-muted);
+      background: var(--surface-2);
+    }
+
+    .accordion-copy {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .accordion-title {
+      display: block;
+
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .accordion-description {
+      display: block;
+
+      margin-top: 1px;
+
+      color: var(--text-muted);
+      font-size: 10px;
+    }
+
+    .accordion-chevron {
+      color: var(--text-muted);
+      transition: transform 0.2s ease;
+    }
+
+    .accordion.active .accordion-chevron {
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 0 16px 16px;
+    }
+
+    .accordion.active .accordion-content {
+      display: block;
+      animation: accordionIn 0.18s ease;
+    }
+
+    @keyframes accordionIn {
+      from {
+        opacity: 0;
+        transform: translateY(-4px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================================================
+       SOCIALS
+       ========================================================= */
+
+    .social-row {
+      display: grid;
+      grid-template-columns: 34px 1fr auto;
+      align-items: center;
+      gap: 9px;
+
+      padding: 9px 0;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .social-row:last-child {
+      border-bottom: 0;
+    }
+
+    .social-icon {
+      width: 34px;
+      height: 34px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid var(--border);
+      border-radius: 8px;
+
+      color: var(--text-soft);
+      background: var(--surface-2);
+    }
+
+    .social-main {
+      min-width: 0;
+    }
+
+    .social-name {
+      display: block;
+
+      margin-bottom: 5px;
+
+      color: var(--text-soft);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .social-input {
+      width: 100%;
+      height: 34px;
+
+      padding: 0 9px;
+
+      border: 1px solid var(--border);
+      border-radius: 7px;
+
+      outline: none;
+
+      background: var(--surface-2);
+      color: var(--text);
+
+      font-size: 11px;
+    }
+
+    .social-input:focus {
+      border-color: rgba(74, 222, 128, 0.4);
+    }
+
+    .switch {
+      position: relative;
+
+      width: 38px;
+      height: 22px;
+
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .switch input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .switch-track {
+      position: absolute;
+      inset: 0;
+
+      border: 1px solid var(--border);
+      border-radius: 99px;
+
+      background: var(--surface-3);
+
+      transition: 0.2s ease;
+    }
+
+    .switch-track::after {
+      content: "";
+
+      position: absolute;
+      top: 3px;
+      left: 3px;
+
+      width: 14px;
+      height: 14px;
+
+      border-radius: 50%;
+
+      background: var(--text-muted);
+
+      transition: 0.2s ease;
+    }
+
+    .switch input:checked + .switch-track {
+      background: var(--accent-soft);
+      border-color: rgba(74, 222, 128, 0.4);
+    }
+
+    .switch input:checked + .switch-track::after {
+      transform: translateX(16px);
+      background: var(--accent);
+    }
+
+    /* =========================================================
+       SKILLS
+       ========================================================= */
+
+    .skill-toolbar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .search-wrap {
+      position: relative;
+      flex: 1;
+    }
+
+    .search-wrap i {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      color: var(--text-muted);
+    }
+
+    .search-input {
+      width: 100%;
+      height: 38px;
+
+      padding: 0 12px 0 34px;
+
+      border: 1px solid var(--border);
+      border-radius: 8px;
+
+      outline: none;
+
+      background: var(--surface-2);
+      color: var(--text);
+
+      font-size: 12px;
+    }
+
+    .skill-count {
+      display: inline-flex;
+      align-items: center;
+
+      margin-bottom: 10px;
+
+      color: var(--text-muted);
+      font-size: 10px;
+    }
+
+    .skill-count strong {
+      margin-right: 4px;
+      color: var(--accent);
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 7px;
+    }
+
+    .skill-btn {
+      min-height: 37px;
+
+      display: flex;
+      align-items: center;
+      gap: 7px;
+
+      padding: 0 9px;
+
+      border: 1px solid var(--border);
+      border-radius: 8px;
+
+      background: var(--surface-2);
+      color: var(--text-soft);
+
+      font-size: 10px;
+      font-weight: 600;
+
+      text-align: left;
+
+      transition: 0.18s ease;
+    }
+
+    .skill-btn:hover {
+      border-color: var(--border-strong);
+      background: var(--surface-hover);
+      color: var(--text);
+    }
+
+    .skill-btn.selected {
+      border-color: rgba(74, 222, 128, 0.35);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .skill-btn i {
+      font-size: 14px;
+    }
+
+    .selected-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+
+      min-height: 30px;
+
+      margin-top: 12px;
+    }
+
+    .skill-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+
+      padding: 5px 8px;
+
+      border: 1px solid rgba(74, 222, 128, 0.2);
+      border-radius: 999px;
+
+      color: var(--accent);
+      background: var(--accent-soft);
+
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .skill-pill button {
+      width: 15px;
+      height: 15px;
+
+      display: grid;
+      place-items: center;
+
+      border: 0;
+      background: transparent;
+      color: inherit;
+    }
+
+    .skill-url-box {
+      margin-top: 14px;
+      padding: 11px;
+
+      border: 1px dashed var(--border);
+      border-radius: 9px;
+
+      background: var(--surface-2);
+    }
+
+    .skill-url-label {
+      margin-bottom: 6px;
+
+      color: var(--text-muted);
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .skill-url {
+      overflow: auto;
+
+      color: var(--text-soft);
+
+      font-family: var(--font-mono);
+      font-size: 9px;
+      white-space: nowrap;
+    }
+
+    /* =========================================================
+       PROJECTS
+       ========================================================= */
+
+    .project-card {
+      padding: 13px;
+
+      border: 1px solid var(--border);
+      border-radius: 11px;
+
+      background: var(--surface-2);
+    }
+
+    .project-card + .project-card {
+      margin-top: 9px;
+    }
+
+    .project-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-bottom: 11px;
+    }
+
+    .project-number {
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 9px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+
+    .project-grid .full {
+      grid-column: 1 / -1;
+    }
+
+    .mini-label {
+      display: block;
+
+      margin-bottom: 5px;
+
+      color: var(--text-muted);
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .mini-input,
+    .mini-textarea {
+      width: 100%;
+
+      border: 1px solid var(--border);
+      border-radius: 7px;
+
+      outline: none;
+
+      background: var(--surface);
+      color: var(--text);
+
+      font-size: 11px;
+    }
+
+    .mini-input {
+      height: 34px;
+      padding: 0 9px;
+    }
+
+    .mini-textarea {
+      min-height: 60px;
+      padding: 8px 9px;
+      resize: vertical;
+    }
+
+    .mini-input:focus,
+    .mini-textarea:focus {
+      border-color: rgba(74, 222, 128, 0.4);
+    }
+
+    .add-project {
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    /* =========================================================
+       TEMPLATE SELECT
+       ========================================================= */
+
+    .template-selector {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+    }
+
+    /* =========================================================
+       CHECKBOXES
+       ========================================================= */
+
+    .toggle-list {
+      display: grid;
+      gap: 7px;
+    }
+
+    .toggle-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 10px 11px;
+
+      border: 1px solid var(--border);
+      border-radius: 9px;
+
+      background: var(--surface-2);
+    }
+
+    .toggle-copy strong {
+      display: block;
+      font-size: 11px;
+    }
+
+    .toggle-copy span {
+      display: block;
+      margin-top: 2px;
+      color: var(--text-muted);
+      font-size: 9px;
+    }
+
+    /* =========================================================
+       PREVIEW
+       ========================================================= */
+
+    .preview-panel {
+      overflow: hidden;
+    }
+
+    .preview-header {
+      min-height: 68px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+
+      padding: 12px 14px;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .preview-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(74, 222, 128, 0.8);
+    }
+
+    .preview-title strong {
+      font-family: var(--font-display);
+      font-size: 13px;
+    }
+
+    .preview-title span {
+      color: var(--text-muted);
+      font-size: 10px;
+    }
+
+    .preview-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .view-tabs {
+      display: inline-flex;
+
+      padding: 3px;
+
+      border: 1px solid var(--border);
+      border-radius: 8px;
+
+      background: var(--surface-2);
+    }
+
+    .view-tab {
+      height: 30px;
+
+      padding: 0 9px;
+
+      border: 0;
+      border-radius: 6px;
+
+      background: transparent;
+      color: var(--text-muted);
+
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .view-tab.active {
+      background: var(--surface-3);
+      color: var(--text);
+    }
+
+    .preview-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 9px 12px;
+
+      border-bottom: 1px solid var(--border);
+
+      background: var(--surface-2);
+    }
+
+    .file-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      color: var(--text-muted);
+
+      font-family: var(--font-mono);
+      font-size: 10px;
+    }
+
+    .file-label i {
+      color: var(--accent);
+    }
+
+    .preview-body {
+      height: calc(100vh - 190px);
+      min-height: 550px;
+
+      overflow: auto;
+
+      background: #0d1117;
+    }
+
+    body.light .preview-body {
+      background: #ffffff;
+    }
+
+    /* =========================================================
+       README RENDERER
+       ========================================================= */
+
+    .readme-preview {
+      max-width: 980px;
+
+      margin: 0 auto;
+      padding: 42px 48px 60px;
+
+      color: #e6edf3;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    body.light .readme-preview {
+      color: #1f2328;
+    }
+
+    .readme-preview h1 {
+      margin: 0 0 18px;
+
+      font-size: 2em;
+      line-height: 1.25;
+
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 0.3em;
+    }
+
+    .readme-preview h2 {
+      margin-top: 32px;
+      margin-bottom: 14px;
+
+      font-size: 1.5em;
+      line-height: 1.25;
+
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 0.3em;
+    }
+
+    .readme-preview h3 {
+      margin-top: 24px;
+      margin-bottom: 10px;
+
+      font-size: 1.25em;
+    }
+
+    .readme-preview p {
+      margin: 0 0 14px;
+    }
+
+    .readme-preview a {
+      color: #58a6ff;
+    }
+
+    .readme-preview strong {
+      color: inherit;
+    }
+
+    .readme-preview ul,
+    .readme-preview ol {
+      padding-left: 2em;
+      margin-bottom: 16px;
+    }
+
+    .readme-preview li + li {
+      margin-top: 5px;
+    }
+
+    .readme-preview blockquote {
+      margin: 0 0 16px;
+      padding: 0 1em;
+
+      color: #8b949e;
+
+      border-left: 3px solid #30363d;
+    }
+
+    .readme-preview code {
+      padding: 0.2em 0.4em;
+
+      border-radius: 6px;
+
+      background: rgba(110, 118, 129, 0.15);
+
+      font-family: var(--font-mono);
+      font-size: 85%;
+    }
+
+    .readme-preview pre {
+      overflow: auto;
+
+      margin-bottom: 16px;
+      padding: 16px;
+
+      border: 1px solid #30363d;
+      border-radius: 8px;
+
+      background: #161b22;
+    }
+
+    .readme-preview pre code {
+      padding: 0;
+      background: transparent;
+    }
+
+    .readme-preview img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .readme-preview table {
+      width: 100%;
+      margin-bottom: 16px;
+      border-collapse: collapse;
+    }
+
+    .readme-preview th,
+    .readme-preview td {
+      padding: 7px 10px;
+      border: 1px solid #30363d;
+    }
+
+    .readme-preview th {
+      font-weight: 700;
+      background: #161b22;
+    }
+
+    .readme-preview hr {
+      margin: 24px 0;
+      border: 0;
+      border-top: 1px solid #30363d;
+    }
+
+    .readme-preview .center {
+      text-align: center;
+    }
+
+    .readme-preview .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 10px 0 18px;
+    }
+
+    .readme-preview .badge-row img {
+      display: inline-block;
+      height: 28px;
+    }
+
+    .readme-preview .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 14px 0 18px;
+    }
+
+    .readme-preview .fake-card {
+      min-height: 120px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid #30363d;
+      border-radius: 8px;
+
+      background: #161b22;
+
+      color: #8b949e;
+      text-align: center;
+    }
+
+    .readme-preview .skill-icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 18px;
+    }
+
+    .readme-preview .skill-icon {
+      width: 42px;
+      height: 42px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid #30363d;
+      border-radius: 8px;
+
+      background: #161b22;
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* =========================================================
+       RAW MARKDOWN
+       ========================================================= */
+
+    .raw-code {
+      display: none;
+
+      height: 100%;
+      min-height: 550px;
+
+      padding: 24px;
+
+      overflow: auto;
+
+      color: #c9d1d9;
+      background: #0d1117;
+
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 1.7;
+
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .raw-code.active {
+      display: block;
+    }
+
+    .readme-preview.hidden {
+      display: none;
+    }
+
+    /* =========================================================
+       STATUS
+       ========================================================= */
+
+    .statusbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      min-height: 42px;
+
+      padding: 0 13px;
+
+      border-top: 1px solid var(--border);
+
+      background: var(--surface);
+    }
+
+    .status-left,
+    .status-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .status-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+
+      color: var(--text-muted);
+
+      font-family: var(--font-mono);
+      font-size: 9px;
+    }
+
+    .status-item strong {
+      color: var(--text-soft);
+    }
+
+    .status-live {
+      width: 5px;
+      height: 5px;
+
+      border-radius: 50%;
+
+      background: var(--accent);
+    }
+
+    /* =========================================================
+       MOBILE TABS
+       ========================================================= */
+
+    .mobile-tabs {
+      display: none;
+
+      position: sticky;
+      top: var(--nav-height);
+      z-index: 90;
+
+      padding: 8px 0;
+
+      background: var(--bg);
+    }
+
+    .mobile-tabs-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      padding: 4px;
+
+      border: 1px solid var(--border);
+      border-radius: 10px;
+
+      background: var(--surface);
+    }
+
+    .mobile-tab {
+      min-height: 38px;
+
+      border: 0;
+      border-radius: 7px;
+
+      background: transparent;
+      color: var(--text-muted);
+
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .mobile-tab.active {
+      background: var(--surface-3);
+      color: var(--text);
+    }
+
+    /* =========================================================
+       MODAL
+       ========================================================= */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(7px);
+    }
+
+    .modal-content {
+      position: relative;
+      z-index: 1;
+
+      width: min(720px, 100%);
+      max-height: 90vh;
+      overflow: auto;
+
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-xl);
+
+      background: var(--surface);
+
+      box-shadow:
+        0 40px 120px rgba(0, 0, 0, 0.55);
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 20px;
+
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-header h2 {
+      font-family: var(--font-display);
+      font-size: 18px;
+    }
+
+    .modal-header p {
+      margin-top: 3px;
+
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .template-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+
+      padding: 20px;
+    }
+
+    .template-card {
+      padding: 16px;
+
+      border: 1px solid var(--border);
+      border-radius: 12px;
+
+      background: var(--surface-2);
+
+      text-align: left;
+
+      transition: 0.2s ease;
+    }
+
+    .template-card:hover,
+    .template-card.active {
+      border-color: rgba(74, 222, 128, 0.35);
+      background: var(--accent-soft);
+    }
+
+    .template-preview {
+      height: 95px;
+
+      margin-bottom: 13px;
+
+      padding: 10px;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+      border-radius: 8px;
+
+      background: var(--bg);
+
+      font-family: var(--font-mono);
+      font-size: 7px;
+      line-height: 1.7;
+    }
+
+    .template-preview .line {
+      height: 4px;
+      width: 65%;
+      margin-bottom: 6px;
+
+      border-radius: 99px;
+
+      background: var(--surface-3);
+    }
+
+    .template-preview .line.short {
+      width: 38%;
+    }
+
+    .template-preview .line.green {
+      width: 52%;
+      background: rgba(74, 222, 128, 0.45);
+    }
+
+    .template-card strong {
+      display: block;
+      font-size: 12px;
+    }
+
+    .template-card span {
+      display: block;
+
+      margin-top: 3px;
+
+      color: var(--text-muted);
+      font-size: 10px;
+    }
+
+    /* =========================================================
+       TOAST
+       ========================================================= */
+
+    .toast-container {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 500;
+
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .toast {
+      min-width: 260px;
+
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
+      padding: 11px 13px;
+
+      border: 1px solid var(--border-strong);
+      border-radius: 10px;
+
+      background: var(--surface);
+
+      box-shadow: var(--shadow);
+
+      font-size: 11px;
+
+      animation: toastIn 0.25s ease;
+    }
+
+    .toast.success i {
+      color: var(--accent);
+    }
+
+    .toast.error i {
+      color: var(--red);
+    }
+
+    @keyframes toastIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0 40px;
+
+      color: var(--text-muted);
+      font-size: 11px;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .footer-brand i {
+      color: var(--accent);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 1180px) {
+      .workspace {
+        grid-template-columns: 390px minmax(0, 1fr);
+      }
+
+      .skill-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-center {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        justify-content: flex-start;
+      }
+
+      .workspace {
+        grid-template-columns: 1fr;
+      }
+
+      .preview-wrapper {
+        position: static;
+      }
+
+      .mobile-tabs {
+        display: block;
+      }
+
+      .builder.mobile-hidden,
+      .preview-wrapper.mobile-hidden {
+        display: none;
+      }
+
+      .preview-body {
+        height: 70vh;
+        min-height: 500px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(100% - 24px, 1500px);
+      }
+
+      :root {
+        --nav-height: 62px;
+      }
+
+      .navbar-inner {
+        gap: 10px;
+      }
+
+      .brand-subtitle {
+        display: none;
+      }
+
+      .nav-right .btn:not(.btn-icon) {
+        display: none;
+      }
+
+      .hero {
+        padding: 38px 0 25px;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .hero-description {
+        font-size: 13px;
+      }
+
+      .hero-actions {
+        width: 100%;
+      }
+
+      .hero-actions .btn {
+        flex: 1;
+      }
+
+      .form-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full,
+      .project-grid .full {
+        grid-column: auto;
+      }
+
+      .skill-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .preview-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .preview-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .readme-preview {
+        padding: 25px 18px 40px;
+        font-size: 14px;
+      }
+
+      .readme-preview .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .template-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .statusbar {
+        overflow: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+
+    <!-- =======================================================
+         NAVBAR
+         ======================================================= -->
+
+    <header class="navbar">
+      <div class="container navbar-inner">
+
+        <a href="#" class="brand">
+          <div class="brand-mark">
+            <i class="bi bi-braces"></i>
+          </div>
+
+          <div class="brand-copy">
+            <span class="brand-name">README Forge</span>
+            <span class="brand-subtitle">GitHub Profile Builder</span>
+          </div>
+        </a>
+
+        <nav class="nav-center">
+          <button
+            type="button"
+            class="nav-item"
+            id="btn-open-templates"
+          >
+            <i class="bi bi-grid"></i>
+            Templates
+          </button>
+
+          <button
+            type="button"
+            class="nav-item"
+            id="btn-load-demo"
+          >
+            <i class="bi bi-stars"></i>
+            Demo
+          </button>
+        </nav>
+
+        <div class="nav-right">
+
+          <button
+            type="button"
+            class="btn btn-icon"
+            id="theme-toggle"
+            title="Toggle theme"
+            aria-label="Toggle theme"
+          >
+            <i class="bi bi-moon-stars"></i>
+          </button>
+
+          <button
+            type="button"
+            class="btn"
+            id="btn-reset-form"
+          >
+            <i class="bi bi-arrow-counterclockwise"></i>
+            Reset
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="btn-nav-export"
+          >
+            <i class="bi bi-download"></i>
+            Export
+          </button>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- =======================================================
+         HERO
+         ======================================================= -->
+
+    <section class="hero">
+      <div class="container hero-inner">
+
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            Markdown · GitHub · Developer Identity
+          </div>
+
+          <h1>
+            Build a README
+            <span>worth starring.</span>
+          </h1>
+
+          <p class="hero-description">
+            Create a polished GitHub Profile README with a powerful visual
+            builder, curated templates, developer-focused sections and
+            real-time Markdown preview.
+          </p>
+        </div>
+
+        <div class="hero-actions">
+          <button
+            type="button"
+            class="btn"
+            id="hero-template-button"
+          >
+            <i class="bi bi-layout-text-sidebar-reverse"></i>
+            Choose template
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="btn-generate-main"
+          >
+            <i class="bi bi-lightning-charge-fill"></i>
+            Generate README
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =======================================================
+         MOBILE BUILDER / PREVIEW TABS
+         ======================================================= -->
+
+    <div class="mobile-tabs">
+      <div class="container">
+        <div class="mobile-tabs-inner">
+
+          <button
+            type="button"
+            class="mobile-tab active"
+            id="mobile-builder-tab"
+          >
+            <i class="bi bi-sliders"></i>
+            Builder
+          </button>
+
+          <button
+            type="button"
+            class="mobile-tab"
+            id="mobile-preview-tab"
+          >
+            <i class="bi bi-eye"></i>
+            Preview
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================================
+         WORKSPACE
+         ======================================================= -->
+
+    <main class="container workspace">
+
+      <!-- =====================================================
+           BUILDER
+           ===================================================== -->
+
+      <section class="builder" id="builder-workspace">
+
+        <!-- PROFILE -->
+        <div class="panel">
+
+          <div class="panel-header">
+            <div class="panel-title">
+              <div class="panel-icon">
+                <i class="bi bi-person"></i>
+              </div>
+
+              <div>
+                <h2>Profile</h2>
+                <p>Your developer identity</p>
+              </div>
+            </div>
+
+            <i class="bi bi-check-circle-fill" style="color:var(--accent);"></i>
+          </div>
+
+          <div class="panel-body">
+
+            <div class="form-grid">
+
+              <div class="form-group full">
+                <label class="label">
+                  Full name
+                  <span>Required</span>
+                </label>
+
+                <input
+                  class="input"
+                  id="prof-name"
+                  type="text"
+                  placeholder="e.g. Alex Johnson"
+                  autocomplete="name"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="label">Role / title</label>
+
+                <input
+                  class="input"
+                  id="prof-role"
+                  type="text"
+                  placeholder="Software Engineer"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="label">Location</label>
+
+                <input
+                  class="input"
+                  id="prof-location"
+                  type="text"
+                  placeholder="Chennai, India"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="label">Company</label>
+
+                <input
+                  class="input"
+                  id="prof-company"
+                  type="text"
+                  placeholder="Your company"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="label">GitHub username</label>
+
+                <input
+                  class="input"
+                  id="prof-github"
+                  type="text"
+                  placeholder="username"
+                  autocomplete="username"
+                />
+
+                <div class="error" id="prof-github-error">
+                  Enter a valid GitHub username.
+                </div>
+              </div>
+
+              <div class="form-group full">
+                <label class="label">Personal website</label>
+
+                <input
+                  class="input"
+                  id="prof-website"
+                  type="url"
+                  placeholder="https://yourwebsite.com"
+                />
+
+                <div class="error" id="prof-website-error">
+                  Enter a valid website URL.
+                </div>
+              </div>
+
+              <div class="form-group full">
+                <label class="label">
+                  Bio
+                  <span id="bio-count">0 / 240</span>
+                </label>
+
+                <textarea
+                  class="textarea"
+                  id="prof-bio"
+                  maxlength="240"
+                  placeholder="Write a concise introduction about yourself, your interests and what you build..."
+                ></textarea>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <!-- SOCIALS -->
+        <div class="panel">
+
+          <div class="accordion active" data-accordion="socials">
+
+            <button
+              type="button"
+              class="accordion-header"
+            >
+              <div class="accordion-icon">
+                <i class="bi bi-share"></i>
+              </div>
+
+              <div class="accordion-copy">
+                <span class="accordion-title">Social profiles</span>
+                <span class="accordion-description">
+                  Connect your developer presence
+                </span>
+              </div>
+
+              <i class="bi bi-chevron-down accordion-chevron"></i>
+            </button>
+
+            <div class="accordion-content">
+
+              <div id="social-rows-container"></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- SKILLS -->
+        <div class="panel">
+
+          <div class="accordion active" data-accordion="skills">
+
+            <button
+              type="button"
+              class="accordion-header"
+            >
+              <div class="accordion-icon">
+                <i class="bi bi-code-slash"></i>
+              </div>
+
+              <div class="accordion-copy">
+                <span class="accordion-title">Technology stack</span>
+                <span class="accordion-description">
+                  Choose the technologies you work with
+                </span>
+              </div>
+
+              <i class="bi bi-chevron-down accordion-chevron"></i>
+            </button>
+
+            <div class="accordion-content">
+
+              <div class="skill-toolbar">
+
+                <div class="search-wrap">
+                  <i class="bi bi-search"></i>
+
+                  <input
+                    class="search-input"
+                    id="skill-search"
+                    type="search"
+                    placeholder="Search technologies..."
+                  />
+                </div>
+
+                <button
+                  type="button"
+                  class="btn btn-icon"
+                  id="btn-clear-skills"
+                  title="Clear selected skills"
+                >
+                  <i class="bi bi-x-lg"></i>
+                </button>
+
+              </div>
+
+              <div class="skill-count">
+                <strong id="skill-selected-count">0</strong>
+                technologies selected
+              </div>
+
+              <div
+                class="skill-grid"
+                id="skill-grid"
+              ></div>
+
+              <div
+                class="selected-skills"
+                id="selected-skills-pills"
+              ></div>
+
+              <div class="skill-url-box">
+
+                <div class="skill-url-label">
+                  Skill Icons URL
+                </div>
+
+                <div
+                  class="skill-url"
+                  id="skill-icons-url"
+                >
+                  https://skillicons.dev/icons
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- PROJECTS -->
+        <div class="panel">
+
+          <div class="accordion active" data-accordion="projects">
+
+            <button
+              type="button"
+              class="accordion-header"
+            >
+              <div class="accordion-icon">
+                <i class="bi bi-folder2-open"></i>
+              </div>
+
+              <div class="accordion-copy">
+                <span class="accordion-title">Featured projects</span>
+                <span class="accordion-description">
+                  Showcase your best work
+                </span>
+              </div>
+
+              <i class="bi bi-chevron-down accordion-chevron"></i>
+            </button>
+
+            <div class="accordion-content">
+
+              <div id="projects-list"></div>
+
+              <button
+                type="button"
+                class="btn add-project"
+                id="btn-add-project"
+              >
+                <i class="bi bi-plus-lg"></i>
+                Add project
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- GITHUB STATS -->
+        <div class="panel">
+
+          <div class="accordion active" data-accordion="stats">
+
+            <button
+              type="button"
+              class="accordion-header"
+            >
+              <div class="accordion-icon">
+                <i class="bi bi-bar-chart"></i>
+              </div>
+
+              <div class="accordion-copy">
+                <span class="accordion-title">GitHub analytics</span>
+                <span class="accordion-description">
+                  Add dynamic GitHub statistics
+                </span>
+              </div>
+
+              <i class="bi bi-chevron-down accordion-chevron"></i>
+            </button>
+
+            <div class="accordion-content">
+
+              <div class="toggle-list">
+
+                <div class="toggle-card">
+                  <div class="toggle-copy">
+                    <strong>Enable GitHub stats</strong>
+                    <span>Show dynamic statistics cards</span>
+                  </div>
+
+                  <label class="switch">
+                    <input
+                      type="checkbox"
+                      id="stats-enabled"
+                      checked
+                    />
+                    <span class="switch-track"></span>
+                  </label>
+                </div>
+
+                <div class="form-group">
+                  <label class="label">
+                    Theme
+                  </label>
+
+                  <select
+                    class="select"
+                    id="stats-theme"
+                  >
+                    <option value="tokyonight">Tokyo Night</option>
+                    <option value="github_dark">GitHub Dark</option>
+                    <option value="radical">Radical</option>
+                    <option value="dracula">Dracula</option>
+                    <option value="transparent">Transparent</option>
+                  </select>
+                </div>
+
+                <div class="toggle-card">
+                  <div class="toggle-copy">
+                    <strong>General statistics</strong>
+                    <span>Stars, commits, PRs and more</span>
+                  </div>
+
+                  <label class="switch">
+                    <input
+                      type="checkbox"
+                      id="stats-show-general"
+                      checked
+                    />
+                    <span class="switch-track"></span>
+                  </label>
+                </div>
+
+                <div class="toggle-card">
+                  <div class="toggle-copy">
+                    <strong>Top languages</strong>
+                    <span>Display your most-used languages</span>
+                  </div>
+
+                  <label class="switch">
+                    <input
+                      type="checkbox"
+                      id="stats-show-languages"
+                      checked
+                    />
+                    <span class="switch-track"></span>
+                  </label>
+                </div>
+
+                <div class="toggle-card">
+                  <div class="toggle-copy">
+                    <strong>Contribution streak</strong>
+                    <span>Display contribution streak card</span>
+                  </div>
+
+                  <label class="switch">
+                    <input
+                      type="checkbox"
+                      id="stats-show-streak"
+                      checked
+                    />
+                    <span class="switch-track"></span>
+                  </label>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- ADDITIONAL -->
+        <div class="panel">
+
+          <div class="accordion" data-accordion="additional">
+
+            <button
+              type="button"
+              class="accordion-header"
+            >
+              <div class="accordion-icon">
+                <i class="bi bi-layers"></i>
+              </div>
+
+              <div class="accordion-copy">
+                <span class="accordion-title">
+                  Additional sections
+                </span>
+
+                <span class="accordion-description">
+                  Customize the rest of your profile
+                </span>
+              </div>
+
+              <i class="bi bi-chevron-down accordion-chevron"></i>
+            </button>
+
+            <div class="accordion-content">
+
+              <div
+                class="toggle-list"
+                id="modular-sections-toggles"
+              ></div>
+
+              <div
+                id="custom-sections-inputs"
+                style="margin-top:12px;"
+              ></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- =====================================================
+           PREVIEW
+           ===================================================== -->
+
+      <section class="preview-wrapper">
+
+        <div class="panel preview-panel">
+
+          <div class="preview-header">
+
+            <div class="preview-title">
+              <span class="live-dot"></span>
+
+              <div>
+                <strong>README Preview</strong>
+                <span>Live compilation</span>
+              </div>
+            </div>
+
+            <div class="preview-actions">
+
+              <div class="view-tabs">
+
+                <button
+                  type="button"
+                  class="view-tab active"
+                  id="btn-view-preview"
+                >
+                  <i class="bi bi-eye"></i>
+                  Preview
+                </button>
+
+                <button
+                  type="button"
+                  class="view-tab"
+                  id="btn-view-code"
+                >
+                  <i class="bi bi-code-square"></i>
+                  Markdown
+                </button>
+
+              </div>
+
+              <button
+                type="button"
+                class="btn btn-icon"
+                id="btn-copy-preview"
+                title="Copy Markdown"
+              >
+                <i class="bi bi-copy"></i>
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-primary btn-icon"
+                id="btn-download-preview"
+                title="Download README.md"
+              >
+                <i class="bi bi-download"></i>
+              </button>
+
+            </div>
+
+          </div>
+
+          <div class="preview-toolbar">
+
+            <div class="file-label">
+              <i class="bi bi-markdown"></i>
+              README.md
+            </div>
+
+            <button
+              type="button"
+              class="btn"
+              id="btn-copy-raw"
+            >
+              <i class="bi bi-copy"></i>
+              Copy raw
+            </button>
+
+          </div>
+
+          <div class="preview-body">
+
+            <article
+              class="readme-preview"
+              id="preview-render-pane"
+            ></article>
+
+            <pre
+              class="raw-code"
+              id="preview-code-pane"
+            ><code id="raw-markdown-code"></code></pre>
+
+          </div>
+
+          <div class="statusbar">
+
+            <div class="status-left">
+
+              <div class="status-item">
+                <span class="status-live"></span>
+                Live
+              </div>
+
+              <div class="status-item">
+                <strong id="stats-char-count">0</strong>
+                chars
+              </div>
+
+              <div class="status-item">
+                <strong id="stats-line-count">0</strong>
+                lines
+              </div>
+
+            </div>
+
+            <div class="status-right">
+
+              <div class="status-item">
+                <i class="bi bi-hdd"></i>
+                Local only
+              </div>
+
+              <div class="status-item">
+                <i class="bi bi-shield-check"></i>
+                No account
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- =======================================================
+         FOOTER
+         ======================================================= -->
+
+    <footer>
+      <div class="container footer-inner">
+
+        <div class="footer-brand">
+          <i class="bi bi-braces"></i>
+          <span>README Forge</span>
+        </div>
+
+        <span>
+          Crafted for developers who care about their GitHub presence.
+        </span>
+
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- =========================================================
+       TEMPLATE MODAL
+       ========================================================= -->
+
+  <div
+    class="modal"
+    id="template-modal"
+    aria-hidden="true"
+  >
+
+    <div
+      class="modal-backdrop"
+      data-modal-close
+    ></div>
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <div>
+          <h2>Choose your README style</h2>
+          <p>Pick a visual structure and keep editing your content.</p>
+        </div>
+
+        <button
+          type="button"
+          class="btn btn-icon"
+          data-modal-close
+          aria-label="Close templates"
+        >
+          <i class="bi bi-x-lg"></i>
+        </button>
+
+      </div>
+
+      <div class="template-grid">
+
+        <button
+          type="button"
+          class="template-card active"
+          data-template="developer"
+        >
+          <div class="template-preview">
+            <div class="line green"></div>
+            <div class="line"></div>
+            <div class="line short"></div>
+            <br />
+            <div class="line"></div>
+            <div class="line green"></div>
+            <div class="line short"></div>
+          </div>
+
+          <strong>Modern Developer</strong>
+          <span>Balanced, technical and expressive.</span>
+        </button>
+
+        <button
+          type="button"
+          class="template-card"
+          data-template="minimal"
+        >
+          <div class="template-preview">
+            <div class="line"></div>
+            <br />
+            <div class="line short"></div>
+            <div class="line"></div>
+            <div class="line short"></div>
+          </div>
+
+          <strong>Clean Minimal</strong>
+          <span>Simple typography and focused content.</span>
+        </button>
+
+        <button
+          type="button"
+          class="template-card"
+          data-template="corporate"
+        >
+          <div class="template-preview">
+            <div class="line green"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <br />
+            <div class="line short"></div>
+            <div class="line"></div>
+          </div>
+
+          <strong>Corporate Executive</strong>
+          <span>Professional, polished and structured.</span>
+        </button>
+
+        <button
+          type="button"
+          class="template-card"
+          data-template="opensource"
+        >
+          <div class="template-preview">
+            <div class="line green"></div>
+            <div class="line short"></div>
+            <br />
+            <div class="line"></div>
+            <div class="line green"></div>
+            <div class="line"></div>
+          </div>
+
+          <strong>Open Source Maintainer</strong>
+          <span>Project-first profile for builders.</span>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- =========================================================
+       TOAST
+       ========================================================= -->
+
+  <div
+    class="toast-container"
+    id="toast-container"
+  ></div>
+
+  <!-- =========================================================
+       JAVASCRIPT
+       ========================================================= -->
+
+  <script>
+    /* =========================================================
+       README FORGE
+       Single-file application
+       ========================================================= */
+
+    "use strict";
+
+    /* =========================================================
+       STATE
+       ========================================================= */
+
+    const state = {
+      theme: "dark",
+
+      activeTemplate: "developer",
+
+      activeMobileView: "builder",
+
+      profile: {
+        name: "",
+        role: "",
+        location: "",
+        company: "",
+        github: "",
+        website: "",
+        bio: ""
+      },
+
+      socials: [
+        {
+          id: "github",
+          label: "GitHub",
+          icon: "github",
+          prefix: "https://github.com/",
+          placeholder: "username",
+          enabled: true,
+          value: ""
+        },
+
+        {
+          id: "linkedin",
+          label: "LinkedIn",
+          icon: "linkedin",
+          prefix: "https://linkedin.com/in/",
+          placeholder: "profile-id",
+          enabled: true,
+          value: ""
+        },
+
+        {
+          id: "twitter",
+          label: "X / Twitter",
+          icon: "twitter-x",
+          prefix: "https://x.com/",
+          placeholder: "handle",
+          enabled: false,
+          value: ""
+        },
+
+        {
+          id: "website",
+          label: "Website",
+          icon: "globe2",
+          prefix: "https://",
+          placeholder: "yourdomain.com",
+          enabled: false,
+          value: ""
+        },
+
+        {
+          id: "email",
+          label: "Email",
+          icon: "envelope",
+          prefix: "mailto:",
+          placeholder: "dev@example.com",
+          enabled: false,
+          value: ""
+        },
+
+        {
+          id: "youtube",
+          label: "YouTube",
+          icon: "youtube",
+          prefix: "https://youtube.com/@",
+          placeholder: "channel",
+          enabled: false,
+          value: ""
+        }
+      ],
+
+      skills: [
+        ["python", "Python", "bi-filetype-py"],
+        ["javascript", "JavaScript", "bi-filetype-js"],
+        ["typescript", "TypeScript", "bi-code-slash"],
+        ["c", "C", "bi-c-circle"],
+        ["cpp", "C++", "bi-code-square"],
+        ["java", "Java", "bi-cup-hot"],
+        ["html", "HTML5", "bi-filetype-html"],
+        ["css", "CSS3", "bi-filetype-css"],
+        ["react", "React", "bi-box"],
+        ["nodejs", "Node.js", "bi-node-plus"],
+        ["nextjs", "Next.js", "bi-triangle"],
+        ["vue", "Vue.js", "bi-vue"],
+        ["tailwind", "Tailwind CSS", "bi-wind"],
+        ["git", "Git", "bi-git"],
+        ["github", "GitHub", "bi-github"],
+        ["linux", "Linux", "bi-terminal"],
+        ["docker", "Docker", "bi-boxes"],
+        ["aws", "AWS", "bi-cloud"],
+        ["firebase", "Firebase", "bi-fire"],
+        ["postgres", "PostgreSQL", "bi-database"],
+        ["mysql", "MySQL", "bi-database-fill"],
+        ["mongodb", "MongoDB", "bi-database"],
+        ["figma", "Figma", "bi-palette"]
+      ].map(([id, name, icon]) => ({
+        id,
+        name,
+        icon,
+        selected: false
+      })),
+
+      projects: [
+        {
+          name: "Quantum UI Engine",
+          desc: "A high-performance lightweight UI component suite built with TypeScript.",
+          github: "https://github.com/username/quantum-ui",
+          demo: "https://quantum-ui.dev",
+          tech: "TypeScript, WebGL, CSS"
+        }
+      ],
+
+      stats: {
+        enabled: true,
+        theme: "tokyonight",
+        showGeneral: true,
+        showLanguages: true,
+        showStreak: true
+      },
+
+      sections: {
+        about: true,
+        skills: true,
+        projects: true,
+        stats: true,
+        learning: true,
+        contact: true
+      },
+
+      customContent: {
+        learning:
+          "Rust, WebAssembly, distributed systems and modern developer tooling.",
+
+        contact:
+          "The quickest way to reach me is through LinkedIn or email."
+      },
+
+      accordion: {
+        socials: true,
+        skills: true,
+        projects: true,
+        stats: true,
+        additional: false
+      }
+    };
+
+    /* =========================================================
+       DOM HELPERS
+       ========================================================= */
+
+    const $ = (selector) => document.querySelector(selector);
+
+    const $$ = (selector) =>
+      Array.from(document.querySelectorAll(selector));
+
+    /* =========================================================
+       INIT
+       ========================================================= */
+
+    document.addEventListener("DOMContentLoaded", () => {
+      initTheme();
+      loadFromLocalStorage();
+
+      renderSocialRows();
+      renderSkillButtons();
+      renderModularSectionToggles();
+      renderProjects();
+
+      syncFormInputsFromState();
+      bindEvents();
+
+      restoreAccordionState();
+
+      updateStatsControls();
+      updateReadme();
+
+      updateMobileView();
+
+      updateIcons();
+    });
+
+    /* =========================================================
+       ICONS
+       ========================================================= */
+
+    function updateIcons() {
+      /*
+       Bootstrap Icons use CSS classes, so nothing is required here.
+       This function intentionally exists so dynamic icon rendering
+       stays centralized.
+       */
+    }
+
+    /* =========================================================
+       THEME
+       ========================================================= */
+
+    function initTheme() {
+      const saved = localStorage.getItem("rf_theme");
+
+      if (saved === "light" || saved === "dark") {
+        state.theme = saved;
+      }
+
+      applyTheme();
+    }
+
+    function applyTheme() {
+      document.body.classList.toggle(
+        "light",
+        state.theme === "light"
+      );
+
+      const button = $("#theme-toggle");
+
+      if (!button) return;
+
+      button.innerHTML =
+        state.theme === "dark"
+          ? '<i class="bi bi-sun"></i>'
+          : '<i class="bi bi-moon-stars"></i>';
+
+      button.title =
+        state.theme === "dark"
+          ? "Switch to light theme"
+          : "Switch to dark theme";
+    }
+
+    function toggleTheme() {
+      state.theme =
+        state.theme === "dark"
+          ? "light"
+          : "dark";
+
+      localStorage.setItem(
+        "rf_theme",
+        state.theme
+      );
+
+      applyTheme();
+    }
+
+    /* =========================================================
+       LOCAL STORAGE
+       ========================================================= */
+
+    function saveToLocalStorage() {
+      try {
+        localStorage.setItem(
+          "rf_state",
+          JSON.stringify(state)
+        );
+      } catch (error) {
+        console.warn("Could not save state.", error);
+      }
+    }
+
+    function loadFromLocalStorage() {
+      try {
+        const saved = localStorage.getItem("rf_state");
+
+        if (!saved) return;
+
+        const parsed = JSON.parse(saved);
+
+        if (!parsed || typeof parsed !== "object") {
+          return;
+        }
+
+        Object.assign(state, parsed);
+
+        state.profile = {
+          ...state.profile,
+          ...(parsed.profile || {})
+        };
+
+        state.stats = {
+          ...state.stats,
+          ...(parsed.stats || {})
+        };
+
+        state.sections = {
+          ...state.sections,
+          ...(parsed.sections || {})
+        };
+
+        state.customContent = {
+          ...state.customContent,
+          ...(parsed.customContent || {})
+        };
+
+        state.accordion = {
+          ...state.accordion,
+          ...(parsed.accordion || {})
+        };
+
+        if (Array.isArray(parsed.socials)) {
+          state.socials = state.socials.map((original) => {
+            const savedSocial = parsed.socials.find(
+              (item) => item.id === original.id
+            );
+
+            return savedSocial
+              ? {
+                  ...original,
+                  ...savedSocial
+                }
+              : original;
+          });
+        }
+
+        if (Array.isArray(parsed.skills)) {
+          state.skills = state.skills.map((original) => {
+            const savedSkill = parsed.skills.find(
+              (item) => item.id === original.id
+            );
+
+            return savedSkill
+              ? {
+                  ...original,
+                  selected: Boolean(savedSkill.selected)
+                }
+              : original;
+          });
+        }
+
+        if (Array.isArray(parsed.projects)) {
+          state.projects = parsed.projects;
+        }
+      } catch (error) {
+        console.warn("Could not load saved state.", error);
+      }
+    }
+
+    /* =========================================================
+       EVENT BINDING
+       ========================================================= */
+
+    function bindEvents() {
+
+      /* Theme */
+
+      $("#theme-toggle")?.addEventListener(
+        "click",
+        toggleTheme
+      );
+
+      /* Templates */
+
+      $("#btn-open-templates")?.addEventListener(
+        "click",
+        openTemplateModal
+      );
+
+      $("#hero-template-button")?.addEventListener(
+        "click",
+        openTemplateModal
+      );
+
+      $$(".template-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          selectTemplate(
+            card.dataset.template
+          );
+        });
+      });
+
+      $$("[data-modal-close]").forEach((element) => {
+        element.addEventListener(
+          "click",
+          closeTemplateModal
+        );
+      });
+
+      /* Demo */
+
+      $("#btn-load-demo")?.addEventListener(
+        "click",
+        loadDemoData
+      );
+
+      /* Reset */
+
+      $("#btn-reset-form")?.addEventListener(
+        "click",
+        resetAll
+      );
+
+      /* Export */
+
+      $("#btn-nav-export")?.addEventListener(
+        "click",
+        downloadMarkdown
+      );
+
+      $("#btn-generate-main")?.addEventListener(
+        "click",
+        () => {
+          updateReadme();
+
+          showToast(
+            "README compiled successfully.",
+            "success"
+          );
+
+          document
+            .querySelector(".preview-wrapper")
+            ?.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+        }
+      );
+
+      /* Profile */
+
+      bindProfileInput(
+        "prof-name",
+        "name"
+      );
+
+      bindProfileInput(
+        "prof-role",
+        "role"
+      );
+
+      bindProfileInput(
+        "prof-location",
+        "location"
+      );
+
+      bindProfileInput(
+        "prof-company",
+        "company"
+      );
+
+      bindProfileInput(
+        "prof-github",
+        "github"
+      );
+
+      bindProfileInput(
+        "prof-website",
+        "website"
+      );
+
+      $("#prof-bio")?.addEventListener(
+        "input",
+        (event) => {
+          state.profile.bio =
+            event.target.value.slice(0, 240);
+
+          updateBioCounter();
+          onStateChange();
+        }
+      );
+
+      /* Skills */
+
+      $("#skill-search")?.addEventListener(
+        "input",
+        (event) => {
+          filterSkills(event.target.value);
+        }
+      );
+
+      $("#btn-clear-skills")?.addEventListener(
+        "click",
+        clearSkills
+      );
+
+      /* Projects */
+
+      $("#btn-add-project")?.addEventListener(
+        "click",
+        addProject
+      );
+
+      /* Stats */
+
+      $("#stats-enabled")?.addEventListener(
+        "change",
+        (event) => {
+          state.stats.enabled =
+            event.target.checked;
+
+          updateStatsControls();
+          onStateChange();
+        }
+      );
+
+      $("#stats-theme")?.addEventListener(
+        "change",
+        (event) => {
+          state.stats.theme =
+            event.target.value;
+
+          onStateChange();
+        }
+      );
+
+      $("#stats-show-general")?.addEventListener(
+        "change",
+        (event) => {
+          state.stats.showGeneral =
+            event.target.checked;
+
+          onStateChange();
+        }
+      );
+
+      $("#stats-show-languages")?.addEventListener(
+        "change",
+        (event) => {
+          state.stats.showLanguages =
+            event.target.checked;
+
+          onStateChange();
+        }
+      );
+
+      $("#stats-show-streak")?.addEventListener(
+        "change",
+        (event) => {
+          state.stats.showStreak =
+            event.target.checked;
+
+          onStateChange();
+        }
+      );
+
+      /* Preview tabs */
+
+      $("#btn-view-preview")?.addEventListener(
+        "click",
+        showPreview
+      );
+
+      $("#btn-view-code")?.addEventListener(
+        "click",
+        showCode
+      );
+
+      $("#btn-copy-preview")?.addEventListener(
+        "click",
+        copyMarkdown
+      );
+
+      $("#btn-copy-raw")?.addEventListener(
+        "click",
+        copyMarkdown
+      );
+
+      $("#btn-download-preview")?.addEventListener(
+        "click",
+        downloadMarkdown
+      );
+
+      /* Mobile tabs */
+
+      $("#mobile-builder-tab")?.addEventListener(
+        "click",
+        () => {
+          state.activeMobileView = "builder";
+          updateMobileView();
+        }
+      );
+
+      $("#mobile-preview-tab")?.addEventListener(
+        "click",
+        () => {
+          state.activeMobileView = "preview";
+          updateMobileView();
+        }
+      );
+
+      /* Accordions */
+
+      $$(".accordion-header").forEach((header) => {
+        header.addEventListener(
+          "click",
+          () => {
+            const accordion =
+              header.closest(".accordion");
+
+            const key =
+              accordion?.dataset.accordion;
+
+            if (!accordion || !key) return;
+
+            accordion.classList.toggle("active");
+
+            state.accordion[key] =
+              accordion.classList.contains("active");
+
+            saveToLocalStorage();
+          }
+        );
+      });
+    }
+
+    /* =========================================================
+       PROFILE
+       ========================================================= */
+
+    function bindProfileInput(id, key) {
+      const input = document.getElementById(id);
+
+      if (!input) return;
+
+      input.addEventListener(
+        "input",
+        (event) => {
+          state.profile[key] =
+            event.target.value;
+
+          if (key === "github") {
+            validateGitHubUsername(
+              event.target.value
+            );
+          }
+
+          if (key === "website") {
+            validateWebsite(
+              event.target.value
+            );
+          }
+
+          onStateChange();
+        }
+      );
+    }
+
+    function syncFormInputsFromState() {
+      const mapping = {
+        "prof-name": state.profile.name,
+        "prof-role": state.profile.role,
+        "prof-location": state.profile.location,
+        "prof-company": state.profile.company,
+        "prof-github": state.profile.github,
+        "prof-website": state.profile.website,
+        "prof-bio": state.profile.bio
+      };
+
+      Object.entries(mapping).forEach(
+        ([id, value]) => {
+          const element =
+            document.getElementById(id);
+
+          if (element) {
+            element.value = value || "";
+          }
+        }
+      );
+
+      updateBioCounter();
+
+      $("#stats-enabled").checked =
+        state.stats.enabled;
+
+      $("#stats-theme").value =
+        state.stats.theme;
+
+      $("#stats-show-general").checked =
+        state.stats.showGeneral;
+
+      $("#stats-show-languages").checked =
+        state.stats.showLanguages;
+
+      $("#stats-show-streak").checked =
+        state.stats.showStreak;
+    }
+
+    function updateBioCounter() {
+      const count =
+        state.profile.bio.length;
+
+      const counter = $("#bio-count");
+
+      if (counter) {
+        counter.textContent =
+          `${count} / 240`;
+      }
+    }
+
+    /* =========================================================
+       VALIDATION
+       ========================================================= */
+
+    function validateGitHubUsername(username) {
+      const input = $("#prof-github");
+      const error = $("#prof-github-error");
+
+      const value =
+        String(username || "").trim();
+
+      if (!value) {
+        input?.classList.remove("invalid");
+        error?.classList.remove("show");
+        return true;
+      }
+
+      const valid =
+        /^[a-z\d](?:[a-z\d-]{0,38}[a-z\d])?$/i.test(
+          value
+        );
+
+      input?.classList.toggle(
+        "invalid",
+        !valid
+      );
+
+      error?.classList.toggle(
+        "show",
+        !valid
+      );
+
+      return valid;
+    }
+
+    function validateWebsite(url) {
+      const input = $("#prof-website");
+      const error = $("#prof-website-error");
+
+      const value =
+        String(url || "").trim();
+
+      if (!value) {
+        input?.classList.remove("invalid");
+        error?.classList.remove("show");
+        return true;
+      }
+
+      const normalized =
+        normalizeUrl(value);
+
+      const valid =
+        isSafeUrl(normalized);
+
+      input?.classList.toggle(
+        "invalid",
+        !valid
+      );
+
+      error?.classList.toggle(
+        "show",
+        !valid
+      );
+
+      return valid;
+    }
+
+    function normalizeUrl(value) {
+      if (!value) return "";
+
+      const trimmed =
+        String(value).trim();
+
+      if (
+        trimmed.startsWith("mailto:")
+      ) {
+        return trimmed;
+      }
+
+      if (
+        /^https?:\/\//i.test(trimmed)
+      ) {
+        return trimmed;
+      }
+
+      return `https://${trimmed}`;
+    }
+
+    function isSafeUrl(url) {
+      if (!url) return false;
+
+      try {
+        const parsed =
+          new URL(url);
+
+        return (
+          parsed.protocol === "http:" ||
+          parsed.protocol === "https:" ||
+          parsed.protocol === "mailto:"
+        );
+      } catch {
+        return false;
+      }
+    }
+
+    /* =========================================================
+       SOCIALS
+       ========================================================= */
+
+    function renderSocialRows() {
+      const container =
+        $("#social-rows-container");
+
+      if (!container) return;
+
+      container.innerHTML = "";
+
+      state.socials.forEach((social) => {
+        const row =
+          document.createElement("div");
+
+        row.className = "social-row";
+
+        row.innerHTML = `
+          <div class="social-icon">
+            <i class="bi bi-${escapeHtml(
+              social.icon
+            )}"></i>
+          </div>
+
+          <div class="social-main">
+            <span class="social-name">
+              ${escapeHtml(social.label)}
+            </span>
+
+            <input
+              class="social-input"
+              data-social-input="${escapeHtml(
+                social.id
+              )}"
+              value="${escapeAttribute(
+                social.value
+              )}"
+              placeholder="${escapeAttribute(
+                social.placeholder
+              )}"
+              type="text"
+            />
+          </div>
+
+          <label class="switch">
+            <input
+              type="checkbox"
+              data-social-toggle="${escapeHtml(
+                social.id
+              )}"
+              ${social.enabled ? "checked" : ""}
+            />
+
+            <span class="switch-track"></span>
+          </label>
+        `;
+
+        container.appendChild(row);
+      });
+
+      container
+        .querySelectorAll("[data-social-input]")
+        .forEach((input) => {
+          input.addEventListener(
+            "input",
+            (event) => {
+              const social =
+                state.socials.find(
+                  (item) =>
+                    item.id ===
+                    event.target.dataset.socialInput
+                );
+
+              if (!social) return;
+
+              social.value =
+                event.target.value;
+
+              onStateChange();
+            }
+          );
+        });
+
+      container
+        .querySelectorAll("[data-social-toggle]")
+        .forEach((input) => {
+          input.addEventListener(
+            "change",
+            (event) => {
+              const social =
+                state.socials.find(
+                  (item) =>
+                    item.id ===
+                    event.target.dataset.socialToggle
+                );
+
+              if (!social) return;
+
+              social.enabled =
+                event.target.checked;
+
+              onStateChange();
+            }
+          );
+        });
+    }
+
+    function buildSocialUrl(social) {
+      if (!social.value) return "";
+
+      const value =
+        social.value.trim();
+
+      if (social.id === "email") {
+        return value.startsWith("mailto:")
+          ? value
+          : `mailto:${value}`;
+      }
+
+      if (social.id === "website") {
+        return normalizeUrl(value);
+      }
+
+      if (
+        value.startsWith("http://") ||
+        value.startsWith("https://")
+      ) {
+        return value;
+      }
+
+      return `${social.prefix}${value}`;
+    }
+
+    /* =========================================================
+       SKILLS
+       ========================================================= */
+
+    function renderSkillButtons(
+      filter = ""
+    ) {
+      const grid =
+        $("#skill-grid");
+
+      if (!grid) return;
+
+      const query =
+        String(filter)
+          .trim()
+          .toLowerCase();
+
+      grid.innerHTML = "";
+
+      state.skills
+        .filter((skill) =>
+          skill.name
+            .toLowerCase()
+            .includes(query)
+        )
+        .forEach((skill) => {
+
+          const button =
+            document.createElement("button");
+
+          button.type = "button";
+
+          button.className =
+            "skill-btn" +
+            (skill.selected
+              ? " selected"
+              : "");
+
+          button.dataset.skill =
+            skill.id;
+
+          button.innerHTML = `
+            <i class="bi ${escapeHtml(
+              skill.icon
+            )}"></i>
+
+            <span>
+              ${escapeHtml(skill.name)}
+            </span>
+          `;
+
+          button.addEventListener(
+            "click",
+            () => {
+              skill.selected =
+                !skill.selected;
+
+              renderSkillButtons(
+                $("#skill-search")?.value || ""
+              );
+
+              renderSelectedSkillPills();
+
+              onStateChange();
+            }
+          );
+
+          grid.appendChild(button);
+        });
+
+      renderSelectedSkillPills();
+    }
+
+    function renderSelectedSkillPills() {
+      const container =
+        $("#selected-skills-pills");
+
+      if (!container) return;
+
+      const selected =
+        state.skills.filter(
+          (skill) => skill.selected
+        );
+
+      container.innerHTML = "";
+
+      selected.forEach((skill) => {
+
+        const pill =
+          document.createElement("span");
+
+        pill.className = "skill-pill";
+
+        pill.innerHTML = `
+          ${escapeHtml(skill.name)}
+
+          <button
+            type="button"
+            aria-label="Remove ${escapeAttribute(
+              skill.name
+            )}"
+            data-remove-skill="${escapeHtml(
+              skill.id
+            )}"
+          >
+            <i class="bi bi-x"></i>
+          </button>
+        `;
+
+        container.appendChild(pill);
+      });
+
+      container
+        .querySelectorAll("[data-remove-skill]")
+        .forEach((button) => {
+          button.addEventListener(
+            "click",
+            () => {
+              const skill =
+                state.skills.find(
+                  (item) =>
+                    item.id ===
+                    button.dataset.removeSkill
+                );
+
+              if (!skill) return;
+
+              skill.selected = false;
+
+              renderSkillButtons(
+                $("#skill-search")?.value || ""
+              );
+
+              onStateChange();
+            }
+          );
+        });
+
+      const count =
+        $("#skill-selected-count");
+
+      if (count) {
+        count.textContent =
+          selected.length;
+      }
+
+      const ids =
+        selected
+          .map((skill) => skill.id)
+          .join(",");
+
+      const url =
+        ids
+          ? `https://skillicons.dev/icons?i=${ids}`
+          : "https://skillicons.dev/icons";
+
+      $("#skill-icons-url").textContent =
+        url;
+    }
+
+    function filterSkills(query) {
+      renderSkillButtons(query);
+    }
+
+    function clearSkills() {
+      state.skills.forEach(
+        (skill) => {
+          skill.selected = false;
+        }
+      );
+
+      renderSkillButtons();
+
+      onStateChange();
+
+      showToast(
+        "Selected technologies cleared.",
+        "success"
+      );
+    }
+
+    /* =========================================================
+       PROJECTS
+       ========================================================= */
+
+    function renderProjects() {
+      const container =
+        $("#projects-list");
+
+      if (!container) return;
+
+      container.innerHTML = "";
+
+      state.projects.forEach(
+        (project, index) => {
+
+          const card =
+            document.createElement("div");
+
+          card.className =
+            "project-card";
+
+          card.innerHTML = `
+            <div class="project-card-header">
+
+              <span class="project-number">
+                PROJECT ${String(index + 1).padStart(2, "0")}
+              </span>
+
+              <button
+                type="button"
+                class="btn btn-icon btn-danger"
+                data-remove-project="${index}"
+                title="Remove project"
+              >
+                <i class="bi bi-trash3"></i>
+              </button>
+
+            </div>
+
+            <div class="project-grid">
+
+              <div>
+                <label class="mini-label">
+                  Project name
+                </label>
+
+                <input
+                  class="mini-input"
+                  data-project-field="name"
+                  data-project-index="${index}"
+                  value="${escapeAttribute(
+                    project.name
+                  )}"
+                  placeholder="My project"
+                />
+              </div>
+
+              <div>
+                <label class="mini-label">
+                  Technologies
+                </label>
+
+                <input
+                  class="mini-input"
+                  data-project-field="tech"
+                  data-project-index="${index}"
+                  value="${escapeAttribute(
+                    project.tech
+                  )}"
+                  placeholder="Python, React"
+                />
+              </div>
+
+              <div class="full">
+                <label class="mini-label">
+                  Description
+                </label>
+
+                <textarea
+                  class="mini-textarea"
+                  data-project-field="desc"
+                  data-project-index="${index}"
+                  placeholder="What does this project do?"
+                >${escapeHtml(
+                  project.desc
+                )}</textarea>
+              </div>
+
+              <div>
+                <label class="mini-label">
+                  GitHub URL
+                </label>
+
+                <input
+                  class="mini-input"
+                  data-project-field="github"
+                  data-project-index="${index}"
+                  value="${escapeAttribute(
+                    project.github
+                  )}"
+                  placeholder="https://github.com/..."
+                />
+              </div>
+
+              <div>
+                <label class="mini-label">
+                  Live demo
+                </label>
+
+                <input
+                  class="mini-input"
+                  data-project-field="demo"
+                  data-project-index="${index}"
+                  value="${escapeAttribute(
+                    project.demo
+                  )}"
+                  placeholder="https://..."
+                />
+              </div>
+
+            </div>
+          `;
+
+          container.appendChild(card);
+        }
+      );
+
+      container
+        .querySelectorAll("[data-project-field]")
+        .forEach((input) => {
+
+          input.addEventListener(
+            "input",
+            (event) => {
+
+              const index =
+                Number(
+                  event.target.dataset.projectIndex
+                );
+
+              const field =
+                event.target.dataset.projectField;
+
+              if (
+                !state.projects[index]
+              ) {
+                return;
+              }
+
+              state.projects[index][field] =
+                event.target.value;
+
+              onStateChange();
+            }
+          );
+        });
+
+      container
+        .querySelectorAll("[data-remove-project]")
+        .forEach((button) => {
+
+          button.addEventListener(
+            "click",
+            () => {
+
+              const index =
+                Number(
+                  button.dataset.removeProject
+                );
+
+              state.projects.splice(
+                index,
+                1
+              );
+
+              renderProjects();
+
+              onStateChange();
+            }
+          );
+        });
+    }
+
+    function addProject() {
+      state.projects.push({
+        name: "",
+        desc: "",
+        github: "",
+        demo: "",
+        tech: ""
+      });
+
+      renderProjects();
+
+      onStateChange();
+
+      setTimeout(() => {
+        const cards =
+          $$(".project-card");
+
+        cards[
+          cards.length - 1
+        ]?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest"
+        });
+      }, 50);
+    }
+
+    /* =========================================================
+       ADDITIONAL SECTIONS
+       ========================================================= */
+
+    function renderModularSectionToggles() {
+      const container =
+        $("#modular-sections-toggles");
+
+      if (!container) return;
+
+      const sections = [
+        {
+          id: "about",
+          title: "About Me",
+          description: "Personal introduction"
+        },
+        {
+          id: "skills",
+          title: "Skills",
+          description: "Technology stack"
+        },
+        {
+          id: "projects",
+          title: "Projects",
+          description: "Featured work"
+        },
+        {
+          id: "stats",
+          title: "GitHub Stats",
+          description: "Dynamic GitHub analytics"
+        },
+        {
+          id: "learning",
+          title: "Currently Learning",
+          description: "What you are exploring"
+        },
+        {
+          id: "contact",
+          title: "Contact",
+          description: "Ways to reach you"
+        }
+      ];
+
+      container.innerHTML = "";
+
+      sections.forEach((section) => {
+
+        const wrapper =
+          document.createElement("div");
+
+        wrapper.className = "toggle-card";
+
+        wrapper.innerHTML = `
+          <div class="toggle-copy">
+            <strong>
+              ${escapeHtml(section.title)}
+            </strong>
+
+            <span>
+              ${escapeHtml(section.description)}
+            </span>
+          </div>
+
+          <label class="switch">
+            <input
+              type="checkbox"
+              data-section-toggle="${escapeHtml(
+                section.id
+              )}"
+              ${
+                state.sections[section.id]
+                  ? "checked"
+                  : ""
+              }
+            />
+
+            <span class="switch-track"></span>
+          </label>
+        `;
+
+        container.appendChild(wrapper);
+      });
+
+      container
+        .querySelectorAll(
+          "[data-section-toggle]"
+        )
+        .forEach((input) => {
+
+          input.addEventListener(
+            "change",
+            (event) => {
+
+              const id =
+                event.target.dataset.sectionToggle;
+
+              state.sections[id] =
+                event.target.checked;
+
+              onStateChange();
+            }
+          );
+        });
+
+      renderCustomSectionInputs();
+    }
+
+    function renderCustomSectionInputs() {
+      const container =
+        $("#custom-sections-inputs");
+
+      if (!container) return;
+
+      container.innerHTML = "";
+
+      const blocks = [
+        {
+          id: "learning",
+          label: "Currently Learning",
+          value: state.customContent.learning
+        },
+        {
+          id: "contact",
+          label: "Contact message",
+          value: state.customContent.contact
+        }
+      ];
+
+      blocks.forEach((block) => {
+
+        const wrapper =
+          document.createElement("div");
+
+        wrapper.className =
+          "form-group";
+
+        wrapper.style.marginTop =
+          "10px";
+
+        wrapper.innerHTML = `
+          <label class="label">
+            ${escapeHtml(block.label)}
+          </label>
+
+          <textarea
+            class="textarea"
+            data-custom-content="${escapeHtml(
+              block.id
+            )}"
+            style="min-height:75px;"
+          >${escapeHtml(
+            block.value
+          )}</textarea>
+        `;
+
+        container.appendChild(wrapper);
+      });
+
+      container
+        .querySelectorAll(
+          "[data-custom-content]"
+        )
+        .forEach((textarea) => {
+
+          textarea.addEventListener(
+            "input",
+            (event) => {
+
+              const id =
+                event.target.dataset.customContent;
+
+              state.customContent[id] =
+                event.target.value;
+
+              onStateChange();
+            }
+          );
+        });
+    }
+
+    /* =========================================================
+       TEMPLATES
+       ========================================================= */
+
+    function openTemplateModal() {
+      const modal =
+        $("#template-modal");
+
+      if (!modal) return;
+
+      modal.classList.add("show");
+      modal.setAttribute(
+        "aria-hidden",
+        "false"
+      );
+
+      updateTemplateCards();
+    }
+
+    function closeTemplateModal() {
+      const modal =
+        $("#template-modal");
+
+      if (!modal) return;
+
+      modal.classList.remove("show");
+      modal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+    }
+
+    function selectTemplate(template) {
+      const valid = [
+        "developer",
+        "minimal",
+        "corporate",
+        "opensource"
+      ];
+
+      if (!valid.includes(template)) {
+        return;
+      }
+
+      state.activeTemplate =
+        template;
+
+      updateTemplateCards();
+
+      closeTemplateModal();
+
+      updateReadme();
+
+      showToast(
+        "README template updated.",
+        "success"
+      );
+    }
+
+    function updateTemplateCards() {
+      $$(".template-card").forEach(
+        (card) => {
+          card.classList.toggle(
+            "active",
+            card.dataset.template ===
+              state.activeTemplate
+          );
+        }
+      );
+    }
+
+    /* =========================================================
+       ACCORDION
+       ========================================================= */
+
+    function restoreAccordionState() {
+      $$(".accordion").forEach(
+        (accordion) => {
+
+          const key =
+            accordion.dataset.accordion;
+
+          if (
+            Object.prototype.hasOwnProperty.call(
+              state.accordion,
+              key
+            )
+          ) {
+            accordion.classList.toggle(
+              "active",
+              Boolean(
+                state.accordion[key]
+              )
+            );
+          }
+        }
+      );
+    }
+
+    /* =========================================================
+       STATS CONTROL
+       ========================================================= */
+
+    function updateStatsControls() {
+      const enabled =
+        state.stats.enabled;
+
+      [
+        "#stats-theme",
+        "#stats-show-general",
+        "#stats-show-languages",
+        "#stats-show-streak"
+      ].forEach((selector) => {
+
+        const element =
+          $(selector);
+
+        if (element) {
+          element.disabled =
+            !enabled;
+
+          element.style.opacity =
+            enabled ? "1" : "0.45";
+        }
+      });
+    }
+
+    /* =========================================================
+       STATE CHANGE
+       ========================================================= */
+
+    function onStateChange() {
+      saveToLocalStorage();
+      updateReadme();
+    }
+
+    /* =========================================================
+       MARKDOWN GENERATOR
+       ========================================================= */
+
+    function generateMarkdown() {
+
+      const profile =
+        state.profile;
+
+      const name =
+        profile.name.trim() ||
+        "there";
+
+      const template =
+        state.activeTemplate;
+
+      const lines = [];
+
+      /* -------------------------------------------------------
+         HEADER
+         ------------------------------------------------------- */
+
+      if (
+        template === "minimal"
+      ) {
+        lines.push(
+          `# ${name}`
+        );
+      } else {
+        lines.push(
+          `# Hi there 👋, I'm ${name}`
+        );
+      }
+
+      lines.push("");
+
+      /* -------------------------------------------------------
+         ROLE
+         ------------------------------------------------------- */
+
+      const roleParts = [];
+
+      if (profile.role.trim()) {
+        roleParts.push(
+          `**${profile.role.trim()}**`
+        );
+      }
+
+      if (profile.company.trim()) {
+        roleParts.push(
+          `at **${profile.company.trim()}**`
+        );
+      }
+
+      if (profile.location.trim()) {
+        roleParts.push(
+          `📍 ${profile.location.trim()}`
+        );
+      }
+
+      if (roleParts.length) {
+        lines.push(
+          roleParts.join(" · ")
+        );
+
+        lines.push("");
+      }
+
+      /* -------------------------------------------------------
+         BIO
+         ------------------------------------------------------- */
+
+      if (
+        state.sections.about &&
+        profile.bio.trim()
+      ) {
+        lines.push(
+          profile.bio.trim()
+        );
+
+        lines.push("");
+      }
+
+      /* -------------------------------------------------------
+         SOCIAL BADGES
+         ------------------------------------------------------- */
+
+      const badges = [];
+
+      state.socials.forEach(
+        (social) => {
+
+          if (
+            !social.enabled ||
+            !social.value.trim()
+          ) {
+            return;
+          }
+
+          const url =
+            buildSocialUrl(social);
+
+          if (!isSafeUrl(url)) {
+            return;
+          }
+
+          const label =
+            social.label;
+
+          let badgeUrl = "";
+
+          if (social.id === "github") {
+            badgeUrl =
+              `https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white`;
+          }
+
+          if (social.id === "linkedin") {
+            badgeUrl =
+              `https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white`;
+          }
+
+          if (social.id === "twitter") {
+            badgeUrl =
+              `https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white`;
+          }
+
+          if (social.id === "website") {
+            badgeUrl =
+              `https://img.shields.io/badge/Website-111827?style=for-the-badge&logo=google-chrome&logoColor=white`;
+          }
+
+          if (social.id === "email") {
+            badgeUrl =
+              `https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white`;
+          }
+
+          if (social.id === "youtube") {
+            badgeUrl =
+              `https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white`;
+          }
+
+          if (
+            badgeUrl &&
+            isSafeUrl(badgeUrl)
+          ) {
+            badges.push(
+              `[![${label}](${badgeUrl})](${url})`
+            );
+          }
+        }
+      );
+
+      if (badges.length) {
+        lines.push(
+          badges.join(" ")
+        );
+
+        lines.push("");
+      }
+
+      /* -------------------------------------------------------
+         SKILLS
+         ------------------------------------------------------- */
+
+      if (
+        state.sections.skills &&
+        state.skills.some(
+          (skill) => skill.selected
+        )
+      ) {
+
+        lines.push(
+          "## 🛠️ Tech Stack"
+        );
+
+        lines.push("");
+
+        const selected =
+          state.skills.filter(
+            (skill) => skill.selected
+          );
+
+        const icons =
+          selected
+            .map(
+              (skill) =>
+                `<img src="https://skillicons.dev/icons?i=${skill.id}" height="42" alt="${skill.name}" />`
+            )
+            .join(" ");
+
+        lines.push(
+          `<p>${icons}</p>`
+        );
+
+        lines.push("");
+
+        lines.push(
+          selected
+            .map(
+              (skill) =>
+                `\`${skill.name}\``
+            )
+            .join(" · ")
+        );
+
+        lines.push("");
+      }
+
+      /* -------------------------------------------------------
+         PROJECTS
+         ------------------------------------------------------- */
+
+      const validProjects =
+        state.projects.filter(
+          (project) =>
+            project.name.trim() ||
+            project.desc.trim()
+        );
+
+      if (
+        state.sections.projects &&
+        validProjects.length
+      ) {
+
+        lines.push(
+          "## 🚀 Featured Projects"
+        );
+
+        lines.push("");
+
+        validProjects.forEach(
+          (project) => {
+
+            const title =
+              project.name.trim() ||
+              "Untitled Project";
+
+            let projectTitle =
+              `### ${title}`;
+
+            if (
+              project.github.trim() &&
+              isSafeUrl(
+                normalizeUrl(
+                  project.github
+                )
+              )
+            ) {
+              projectTitle =
+                `### [${title}](${normalizeUrl(
+                  project.github
+                )})`;
+            }
+
+            lines.push(
+              projectTitle
+            );
+
+            if (project.desc.trim()) {
+              lines.push(
+                project.desc.trim()
+              );
+            }
+
+            if (project.tech.trim()) {
+              lines.push("");
+
+              lines.push(
+                `**Built with:** ${project.tech.trim()}`
+              );
+            }
+
+            if (
+              project.demo.trim() &&
+              isSafeUrl(
+                normalizeUrl(
+                  project.demo
+                )
+              )
+            ) {
+              lines.push("");
+
+              lines.push(
+                `[Live Demo →](${normalizeUrl(
+                  project.demo
+                )})`
+              );
+            }
+
+            lines.push("");
+          }
+        );
+      }
+
+      /* -------------------------------------------------------
+         STATS
+         ------------------------------------------------------- */
+
+      if (
+        state.sections.stats &&
+        state.stats.enabled &&
+        profile.github.trim() &&
+        validateGitHubUsername(
+          profile.github
+        )
+      ) {
+
+        const username =
+          profile.github.trim();
+
+        const theme =
+          encodeURIComponent(
+            state.stats.theme
+          );
+
+        lines.push(
+          "## 📊 GitHub Statistics"
+        );
+
+        lines.push("");
+
+        if (
+          state.stats.showGeneral
+        ) {
+          lines.push(
+            `<img src="https://github-readme-stats.vercel.app/api?username=${encodeURIComponent(
+              username
+            )}&show_icons=true&theme=${theme}" alt="GitHub Stats" />`
+          );
+
+          lines.push("");
+        }
+
+        if (
+          state.stats.showLanguages
+        ) {
+          lines.push(
+            `<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=${encodeURIComponent(
+              username
+            )}&layout=compact&theme=${theme}" alt="Top Languages" />`
+          );
+
+          lines.push("");
+        }
+
+        if (
+          state.stats.showStreak
+        ) {
+          lines.push(
+            `<img src="https://streak-stats.demolab.com?user=${encodeURIComponent(
+              username
+            )}&theme=${theme}" alt="GitHub Streak" />`
+          );
+
+          lines.push("");
+        }
+      }
+
+      /* -------------------------------------------------------
+         LEARNING
+         ------------------------------------------------------- */
+
+      if (
+        state.sections.learning &&
+        state.customContent.learning.trim()
+      ) {
+
+        lines.push(
+          "## 🌱 Currently Learning"
+        );
+
+        lines.push("");
+
+        lines.push(
+          state.customContent.learning.trim()
+        );
+
+        lines.push("");
+      }
+
+      /* -------------------------------------------------------
+         CONTACT
+         ------------------------------------------------------- */
+
+      if (
+        state.sections.contact &&
+        state.customContent.contact.trim()
+      ) {
+
+        lines.push(
+          "## 📫 Let's Connect"
+        );
+
+        lines.push("");
+
+        lines.push(
+          state.customContent.contact.trim()
+        );
+
+        lines.push("");
+      }
+
+      /* -------------------------------------------------------
+         FOOTER
+         ------------------------------------------------------- */
+
+      if (
+        template !== "minimal"
+      ) {
+        lines.push(
+          "---"
+        );
+
+        lines.push("");
+
+        lines.push(
+          "<p align=\"center\">Built with ❤️ using README Forge.</p>"
+        );
+      }
+
+      return lines
+        .join("\n")
+        .replace(/\n{3,}/g, "\n\n")
+        .trim();
+    }
+
+    /* =========================================================
+       UPDATE README
+       ========================================================= */
+
+    function updateReadme() {
+
+      const markdown =
+        generateMarkdown();
+
+      const preview =
+        $("#preview-render-pane");
+
+      const code =
+        $("#raw-markdown-code");
+
+      if (preview) {
+        preview.innerHTML =
+          parseMarkdownToHTML(
+            markdown
+          );
+      }
+
+      if (code) {
+        code.textContent =
+          markdown;
+      }
+
+      const chars =
+        $("#stats-char-count");
+
+      const lines =
+        $("#stats-line-count");
+
+      if (chars) {
+        chars.textContent =
+          markdown.length;
+      }
+
+      if (lines) {
+        lines.textContent =
+          markdown
+            ? markdown.split("\n").length
+            : 0;
+      }
+    }
+
+    /* =========================================================
+       SAFE MARKDOWN PREVIEW
+       ========================================================= */
+
+    function parseMarkdownToHTML(markdown) {
+
+      const source =
+        String(markdown || "")
+          .replace(/\r\n/g, "\n")
+          .replace(/\r/g, "\n");
+
+      const lines =
+        source.split("\n");
+
+      let html = "";
+
+      let inCode = false;
+      let codeBuffer = [];
+
+      let listType = null;
+
+      function closeList() {
+        if (listType === "ul") {
+          html += "</ul>";
+        }
+
+        if (listType === "ol") {
+          html += "</ol>";
+        }
+
+        listType = null;
+      }
+
+      function inline(text) {
+
+        let safe =
+          escapeHtml(text);
+
+        /*
+         * Images
+         */
+
+        safe =
+          safe.replace(
+            /!\[([^\]]*)\]\((https?:\/\/[^\s)]+)\)/gi,
+            (match, alt, url) => {
+
+              if (!isSafeUrl(url)) {
+                return "";
+              }
+
+              return `<img src="${escapeAttribute(
+                url
+              )}" alt="${escapeAttribute(
+                alt
+              )}" loading="lazy">`;
+            }
+          );
+
+        /*
+         * Links
+         */
+
+        safe =
+          safe.replace(
+            /\[([^\]]+)\]\((https?:\/\/[^\s)]+|mailto:[^\s)]+)\)/gi,
+            (match, label, url) => {
+
+              if (!isSafeUrl(url)) {
+                return escapeHtml(label);
+              }
+
+              return `<a href="${escapeAttribute(
+                url
+              )}" target="_blank" rel="noopener noreferrer">${label}</a>`;
+            }
+          );
+
+        /*
+         * Bold
+         */
+
+        safe =
+          safe.replace(
+            /\*\*(.+?)\*\*/g,
+            "<strong>$1</strong>"
+          );
+
+        /*
+         * Inline code
+         */
+
+        safe =
+          safe.replace(
+            /`([^`]+)`/g,
+            "<code>$1</code>"
+          );
+
+        /*
+         * Italic
+         */
+
+        safe =
+          safe.replace(
+            /(^|[^*])\*([^*]+)\*(?!\*)/g,
+            "$1<em>$2</em>"
+          );
+
+        return safe;
+      }
+
+      for (
+        let i = 0;
+        i < lines.length;
+        i++
+      ) {
+
+        const line =
+          lines[i];
+
+        /*
+         * Code blocks
+         */
+
+        if (
+          line.trim().startsWith("```")
+        ) {
+
+          if (!inCode) {
+
+            closeList();
+
+            inCode = true;
+            codeBuffer = [];
+
+          } else {
+
+            html +=
+              `<pre><code>${escapeHtml(
+                codeBuffer.join("\n")
+              )}</code></pre>`;
+
+            inCode = false;
+            codeBuffer = [];
+          }
+
+          continue;
+        }
+
+        if (inCode) {
+          codeBuffer.push(line);
+          continue;
+        }
+
+        /*
+         * Empty
+         */
+
+        if (!line.trim()) {
+          closeList();
+          continue;
+        }
+
+        /*
+         * HTML image / paragraph generated by Forge
+         */
+
+        if (
+          line.trim().startsWith("<p") &&
+          line.trim().endsWith("</p>")
+        ) {
+
+          closeList();
+
+          const content =
+            line
+              .replace(/^<p[^>]*>/i, "")
+              .replace(/<\/p>$/i, "");
+
+          const safeImages =
+            sanitizeGeneratedImages(
+              content
+            );
+
+          html += `<p>${safeImages}</p>`;
+
+          continue;
+        }
+
+        /*
+         * Generated center HTML
+         */
+
+        if (
+          line.trim().startsWith("<p align=")
+        ) {
+
+          closeList();
+
+          const content =
+            line
+              .replace(
+                /^<p[^>]*>/i,
+                ""
+              )
+              .replace(
+                /<\/p>$/i,
+                ""
+              );
+
+          html +=
+            `<p class="center">${inline(
+              stripHtml(content)
+            )}</p>`;
+
+          continue;
+        }
+
+        /*
+         * Horizontal rule
+         */
+
+        if (
+          /^---+$/.test(
+            line.trim()
+          )
+        ) {
+          closeList();
+          html += "<hr>";
+          continue;
+        }
+
+        /*
+         * Headings
+         */
+
+        const heading =
+          line.match(
+            /^(#{1,6})\s+(.+)$/
+          );
+
+        if (heading) {
+
+          closeList();
+
+          const level =
+            heading[1].length;
+
+          html +=
+            `<h${level}>${inline(
+              heading[2]
+            )}</h${level}>`;
+
+          continue;
+        }
+
+        /*
+         * Unordered list
+         */
+
+        const unordered =
+          line.match(
+            /^\s*[-*]\s+(.+)$/
+          );
+
+        if (unordered) {
+
+          if (listType !== "ul") {
+            closeList();
+            html += "<ul>";
+            listType = "ul";
+          }
+
+          html +=
+            `<li>${inline(
+              unordered[1]
+            )}</li>`;
+
+          continue;
+        }
+
+        /*
+         * Ordered list
+         */
+
+        const ordered =
+          line.match(
+            /^\s*\d+\.\s+(.+)$/
+          );
+
+        if (ordered) {
+
+          if (listType !== "ol") {
+            closeList();
+            html += "<ol>";
+            listType = "ol";
+          }
+
+          html +=
+            `<li>${inline(
+              ordered[1]
+            )}</li>`;
+
+          continue;
+        }
+
+        /*
+         * Blockquote
+         */
+
+        if (
+          line.trim().startsWith(">")
+        ) {
+
+          closeList();
+
+          html +=
+            `<blockquote>${inline(
+              line
+                .replace(/^>\s?/, "")
+            )}</blockquote>`;
+
+          continue;
+        }
+
+        /*
+         * Table
+         */
+
+        if (
+          line.includes("|") &&
+          i + 1 < lines.length &&
+          /^\s*\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)+\|?\s*$/.test(
+            lines[i + 1]
+          )
+        ) {
+
+          closeList();
+
+          const headerCells =
+            splitTableRow(line);
+
+          const separatorCells =
+            splitTableRow(
+              lines[i + 1]
+            );
+
+          html += "<table>";
+
+          html += "<thead><tr>";
+
+          headerCells.forEach(
+            (cell) => {
+              html +=
+                `<th>${inline(
+                  cell
+                )}</th>`;
+            }
+          );
+
+          html += "</tr></thead>";
+
+          html += "<tbody>";
+
+          i += 2;
+
+          while (
+            i < lines.length &&
+            lines[i].includes("|")
+          ) {
+
+            const cells =
+              splitTableRow(
+                lines[i]
+              );
+
+            html += "<tr>";
+
+            cells.forEach(
+              (cell) => {
+                html +=
+                  `<td>${inline(
+                    cell
+                  )}</td>`;
+              }
+            );
+
+            html += "</tr>";
+
+            i++;
+          }
+
+          i--;
+
+          html +=
+            "</tbody></table>";
+
+          continue;
+        }
+
+        /*
+         * Plain paragraph
+         */
+
+        closeList();
+
+        html +=
+          `<p>${inline(line)}</p>`;
+      }
+
+      if (inCode) {
+        html +=
+          `<pre><code>${escapeHtml(
+            codeBuffer.join("\n")
+          )}</code></pre>`;
+      }
+
+      closeList();
+
+      return html;
+    }
+
+    function splitTableRow(row) {
+      return row
+        .trim()
+        .replace(/^\|/, "")
+        .replace(/\|$/, "")
+        .split("|")
+        .map(
+          (cell) => cell.trim()
+        );
+    }
+
+    function stripHtml(value) {
+      return String(value)
+        .replace(/<[^>]*>/g, "");
+    }
+
+    function sanitizeGeneratedImages(content) {
+
+      return String(content).replace(
+        /<img\s+([^>]+)>/gi,
+        (match, attributes) => {
+
+          const srcMatch =
+            attributes.match(
+              /src=["']([^"']+)["']/i
+            );
+
+          if (!srcMatch) {
+            return "";
+          }
+
+          const src =
+            srcMatch[1];
+
+          if (!isSafeUrl(src)) {
+            return "";
+          }
+
+          const altMatch =
+            attributes.match(
+              /alt=["']([^"']*)["']/i
+            );
+
+          const heightMatch =
+            attributes.match(
+              /height=["']([^"']*)["']/i
+            );
+
+          const alt =
+            altMatch
+              ? altMatch[1]
+              : "";
+
+          const height =
+            heightMatch
+              ? heightMatch[1]
+              : "";
+
+          return `
+            <img
+              src="${escapeAttribute(src)}"
+              alt="${escapeAttribute(alt)}"
+              ${
+                /^\d+$/.test(height)
+                  ? `height="${height}"`
+                  : ""
+              }
+              loading="lazy"
+            >
+          `;
+        }
+      );
+    }
+
+    /* =========================================================
+       ESCAPING
+       ========================================================= */
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function escapeAttribute(value) {
+      return escapeHtml(value);
+    }
+
+    /* =========================================================
+       PREVIEW / CODE
+       ========================================================= */
+
+    function showPreview() {
+
+      $("#preview-render-pane")
+        ?.classList.remove("hidden");
+
+      $("#preview-code-pane")
+        ?.classList.remove("active");
+
+      $("#btn-view-preview")
+        ?.classList.add("active");
+
+      $("#btn-view-code")
+        ?.classList.remove("active");
+    }
+
+    function showCode() {
+
+      $("#preview-render-pane")
+        ?.classList.add("hidden");
+
+      $("#preview-code-pane")
+        ?.classList.add("active");
+
+      $("#btn-view-preview")
+        ?.classList.remove("active");
+
+      $("#btn-view-code")
+        ?.classList.add("active");
+    }
+
+    /* =========================================================
+       MOBILE VIEW
+       ========================================================= */
+
+    function updateMobileView() {
+
+      const builder =
+        $("#builder-workspace");
+
+      const preview =
+        $(".preview-wrapper");
+
+      const builderTab =
+        $("#mobile-builder-tab");
+
+      const previewTab =
+        $("#mobile-preview-tab");
+
+      if (
+        state.activeMobileView ===
+        "preview"
+      ) {
+
+        builder?.classList.add(
+          "mobile-hidden"
+        );
+
+        preview?.classList.remove(
+          "mobile-hidden"
+        );
+
+        builderTab?.classList.remove(
+          "active"
+        );
+
+        previewTab?.classList.add(
+          "active"
+        );
+
+      } else {
+
+        builder?.classList.remove(
+          "mobile-hidden"
+        );
+
+        preview?.classList.add(
+          "mobile-hidden"
+        );
+
+        builderTab?.classList.add(
+          "active"
+        );
+
+        previewTab?.classList.remove(
+          "active"
+        );
+      }
+    }
+
+    /* =========================================================
+       CLIPBOARD
+       ========================================================= */
+
+    async function copyMarkdown() {
+
+      const markdown =
+        generateMarkdown();
+
+      try {
+
+        await navigator.clipboard.writeText(
+          markdown
+        );
+
+        showToast(
+          "Markdown copied to clipboard.",
+          "success"
+        );
+
+      } catch {
+
+        const textarea =
+          document.createElement("textarea");
+
+        textarea.value =
+          markdown;
+
+        textarea.style.position =
+          "fixed";
+
+        textarea.style.opacity =
+          "0";
+
+        document.body.appendChild(
+          textarea
+        );
+
+        textarea.select();
+
+        document.execCommand(
+          "copy"
+        );
+
+        textarea.remove();
+
+        showToast(
+          "Markdown copied to clipboard.",
+          "success"
+        );
+      }
+    }
+
+    /* =========================================================
+       DOWNLOAD
+       ========================================================= */
+
+    function downloadMarkdown() {
+
+      const markdown =
+        generateMarkdown();
+
+      const blob =
+        new Blob(
+          [markdown],
+          {
+            type: "text/markdown;charset=utf-8"
+          }
+        );
+
+      const url =
+        URL.createObjectURL(blob);
+
+      const anchor =
+        document.createElement("a");
+
+      anchor.href = url;
+
+      anchor.download =
+        "README.md";
+
+      document.body.appendChild(
+        anchor
+      );
+
+      anchor.click();
+
+      anchor.remove();
+
+      URL.revokeObjectURL(
+        url
+      );
+
+      showToast(
+        "README.md downloaded.",
+        "success"
+      );
+    }
+
+    /* =========================================================
+       DEMO DATA
+       ========================================================= */
+
+    function loadDemoData() {
+
+      state.profile = {
+        name: "Sarah Chen",
+        role: "Software Engineer",
+        location: "Singapore",
+        company: "Independent",
+        github: "sarahchen",
+        website: "https://sarahchen.dev",
+        bio:
+          "Software engineer focused on building fast, accessible and thoughtful developer experiences."
+      };
+
+      state.socials =
+        state.socials.map(
+          (social) => {
+
+            const values = {
+              github: {
+                enabled: true,
+                value: "sarahchen"
+              },
+
+              linkedin: {
+                enabled: true,
+                value: "sarah-chen"
+              },
+
+              twitter: {
+                enabled: true,
+                value: "sarahcodes"
+              },
+
+              website: {
+                enabled: true,
+                value: "sarahchen.dev"
+              },
+
+              email: {
+                enabled: true,
+                value: "hello@sarahchen.dev"
+              },
+
+              youtube: {
+                enabled: false,
+                value: ""
+              }
+            };
+
+            return {
+              ...social,
+              ...(values[social.id] || {})
+            };
+          }
+        );
+
+      const demoSkills = [
+        "typescript",
+        "react",
+        "nextjs",
+        "nodejs",
+        "tailwind",
+        "git",
+        "github",
+        "docker",
+        "postgres"
+      ];
+
+      state.skills.forEach(
+        (skill) => {
+          skill.selected =
+            demoSkills.includes(
+              skill.id
+            );
+        }
+      );
+
+      state.projects = [
+        {
+          name: "Atlas",
+          desc:
+            "A collaborative knowledge platform designed for engineering teams to document, discover and share technical knowledge.",
+          github:
+            "https://github.com/sarahchen/atlas",
+          demo:
+            "https://atlas.example.com",
+          tech:
+            "TypeScript, Next.js, PostgreSQL"
+        },
+
+        {
+          name: "Pulse",
+          desc:
+            "A lightweight observability dashboard for monitoring distributed applications.",
+          github:
+            "https://github.com/sarahchen/pulse",
+          demo:
+            "https://pulse.example.com",
+          tech:
+            "React, Node.js, Docker"
+        }
+      ];
+
+      state.stats = {
+        enabled: true,
+        theme: "tokyonight",
+        showGeneral: true,
+        showLanguages: true,
+        showStreak: true
+      };
+
+      state.sections = {
+        about: true,
+        skills: true,
+        projects: true,
+        stats: true,
+        learning: true,
+        contact: true
+      };
+
+      state.customContent = {
+        learning:
+          "Rust, WebAssembly, distributed systems and developer tooling.",
+        contact:
+          "I'm always interested in thoughtful engineering conversations and interesting open-source projects."
+      };
+
+      state.activeTemplate =
+        "developer";
+
+      syncFormInputsFromState();
+
+      renderSocialRows();
+      renderSkillButtons();
+      renderProjects();
+      renderModularSectionToggles();
+
+      updateStatsControls();
+
+      onStateChange();
+
+      showToast(
+        "Demo profile loaded.",
+        "success"
+      );
+    }
+
+    /* =========================================================
+       RESET
+       ========================================================= */
+
+    function resetAll() {
+
+      const confirmed =
+        window.confirm(
+          "Reset your README Forge workspace?"
+        );
+
+      if (!confirmed) return;
+
+      state.profile = {
+        name: "",
+        role: "",
+        location: "",
+        company: "",
+        github: "",
+        website: "",
+        bio: ""
+      };
+
+      state.socials.forEach(
+        (social) => {
+          social.value = "";
+
+          social.enabled =
+            social.id === "github" ||
+            social.id === "linkedin";
+        }
+      );
+
+      state.skills.forEach(
+        (skill) => {
+          skill.selected = false;
+        }
+      );
+
+      state.projects = [];
+
+      state.stats = {
+        enabled: true,
+        theme: "tokyonight",
+        showGeneral: true,
+        showLanguages: true,
+        showStreak: true
+      };
+
+      state.sections = {
+        about: true,
+        skills: true,
+        projects: true,
+        stats: true,
+        learning: true,
+        contact: true
+      };
+
+      state.customContent = {
+        learning:
+          "Rust, WebAssembly, distributed systems and modern developer tooling.",
+        contact:
+          "The quickest way to reach me is through LinkedIn or email."
+      };
+
+      state.activeTemplate =
+        "developer";
+
+      state.accordion = {
+        socials: true,
+        skills: true,
+        projects: true,
+        stats: true,
+        additional: false
+      };
+
+      localStorage.removeItem(
+        "rf_state"
+      );
+
+      syncFormInputsFromState();
+
+      renderSocialRows();
+      renderSkillButtons();
+      renderProjects();
+      renderModularSectionToggles();
+
+      restoreAccordionState();
+
+      updateStatsControls();
+
+      onStateChange();
+
+      showToast(
+        "Workspace reset.",
+        "success"
+      );
+    }
+
+    /* =========================================================
+       TOAST
+       ========================================================= */
+
+    function showToast(
+      message,
+      type = "info"
+    ) {
+
+      const container =
+        $("#toast-container");
+
+      if (!container) return;
+
+      const toast =
+        document.createElement("div");
+
+      toast.className =
+        `toast ${type}`;
+
+      const icon =
+        type === "success"
+          ? "check-circle-fill"
+          : type === "error"
+          ? "exclamation-circle-fill"
+          : "info-circle-fill";
+
+      toast.innerHTML = `
+        <i class="bi bi-${icon}"></i>
+        <span>${escapeHtml(
+          message
+        )}</span>
+      `;
+
+      container.appendChild(
+        toast
+      );
+
+      setTimeout(() => {
+        toast.style.opacity =
+          "0";
+
+        toast.style.transform =
+          "translateY(8px)";
+
+        setTimeout(
+          () => toast.remove(),
+          200
+        );
+      }, 2800);
+    }
+
+    /* =========================================================
+       KEYBOARD SHORTCUTS
+       ========================================================= */
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+
+        /*
+         * Ctrl/Cmd + S
+         * Download README
+         */
+
+        if (
+          (event.ctrlKey ||
+            event.metaKey) &&
+          event.key.toLowerCase() === "s"
+        ) {
+
+          event.preventDefault();
+
+          downloadMarkdown();
+        }
+
+        /*
+         * Ctrl/Cmd + Shift + C
+         * Copy Markdown
+         */
+
+        if (
+          (event.ctrlKey ||
+            event.metaKey) &&
+          event.shiftKey &&
+          event.key.toLowerCase() === "c"
+        ) {
+
+          event.preventDefault();
+
+          copyMarkdown();
+        }
+
+        /*
+         * Escape closes modal
+         */
+
+        if (
+          event.key === "Escape"
+        ) {
+          closeTemplateModal();
+        }
+      }
+    );
+
+    /* =========================================================
+       WINDOW RESIZE
+       ========================================================= */
+
+    window.addEventListener(
+      "resize",
+      () => {
+
+        if (
+          window.innerWidth > 900
+        ) {
+
+          $("#builder-workspace")
+            ?.classList.remove(
+              "mobile-hidden"
+            );
+
+          $(".preview-wrapper")
+            ?.classList.remove(
+              "mobile-hidden"
+            );
+        }
+      }
+    );
+
+  </script>
+</body>
+</html>
